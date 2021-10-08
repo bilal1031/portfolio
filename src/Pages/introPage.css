@@ -1,0 +1,21 @@
+.helloDiv {
+  padding-left: 120px;
+  margin-top: 150px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .helloDiv {
+    padding-left: 80px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .helloDiv {
+    padding-left: 50px;
+  }
+}
+@media only screen and (max-width: 425px) {
+  .helloDiv {
+    padding-left: 50px;
+  }
+}

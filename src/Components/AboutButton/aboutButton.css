@@ -1,0 +1,33 @@
+.buttonDiv {
+  height: 80px;
+  width: 320px;
+  border-radius: 30px;
+  position: "absolute";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  transition: 0.4s;
+}
+
+.upper {
+  background-color: #4dd599;
+  z-index: 1;
+  position: absolute;
+}
+
+.lower {
+  background-color: #419b73;
+  top: 10px;
+  position: absolute;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .buttonDiv {
+    width: 220px;
+  }
+}
+.upper:active {
+  transform: translateY(15px);
+}
