@@ -1,10 +1,11 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import colors from "../Colors/colors";
-import AboutButton from "../Components/AboutButton/AboutButton";
+import colors from "../../Colors/colors";
+import AboutButton from "../../Components/AboutButton/AboutButton";
+import Wrapper from "../../Components/Wrapper/Wrapper";
 import "./introPage.css";
 
-const IntroPage = () => {
+const IntroPage = (props) => {
   const h1 = {
     color: colors.white,
     fontSize: 48,
@@ -12,16 +13,9 @@ const IntroPage = () => {
     alignSelf: "start",
   };
   return (
-    <Container
-      fluid
-      style={{
-        backgroundColor: colors.primary,
-        width: "100%",
-        height: 720,
-      }}
-    >
+    <Wrapper color={colors.primary} translate={props.translate} {...props}>
       <Row>
-        <Col fluid>
+        <Col>
           <Container className="helloDiv">
             <Row>
               <Col>
@@ -65,7 +59,7 @@ const IntroPage = () => {
           </Container>
         </Col>
       </Row>
-    </Container>
+    </Wrapper>
   );
 };
 
