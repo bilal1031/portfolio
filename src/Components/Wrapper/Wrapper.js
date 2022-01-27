@@ -6,12 +6,13 @@ const Wrapper = styled.div`
   height: 100%;
   transition: 0.5s;
   width: 100%;
-  height: 100vh;
+  // height: 100vh;
   position: absolute;
   left: 100vw;
-  transform: ${(props) => props.translate};
+  transform: translateX(${(props) => props.translate}%);
   @media only screen and (max-width: 768px) {
      {
+      transform: translateX(0%);
       position: relative;
       left: 0;
     }

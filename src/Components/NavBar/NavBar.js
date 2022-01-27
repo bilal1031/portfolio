@@ -41,8 +41,9 @@ const NavBar = (props) => {
   const handleNavClick = (e) => {
     setIndicatorLocation(e.target.offsetLeft);
     setIndicatorWidth(e.target.clientWidth);
-    translatePage(e.target.innerHTML);
-    if (window.innerHeight > 768) {
+    console.log(window.innerWidth);
+    if (window.innerWidth > 768) {
+      translatePage(e.target.innerHTML);
     }
   };
 
@@ -56,7 +57,6 @@ const NavBar = (props) => {
       >
         <Container>
           <Navbar.Brand>Muhammad Bilal</Navbar.Brand>
-
           <Nav className="float-end" style={{ position: "relative" }}>
             {navItems.map((e) => (
               <Nav.Link ref={home} onClick={handleNavClick}>

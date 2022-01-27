@@ -18,13 +18,19 @@ html {
   background-color: #16213e;
 }
 
+@media only screen and (max-width: 768px) {
+  html {
+    overflow: auto;
+    overflow-x: hidden;
+  }
+}
 /* #home {
   left: 0vh;
 } */
-
+/* 
 a .page {
   width: 100%;
   height: 100vh;
   position: absolute;
   left: 100vw;
-}
+} */

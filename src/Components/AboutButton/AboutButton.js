@@ -6,7 +6,14 @@ const AboutButton = ({ title }) => {
     console.log(e);
   };
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      style={{
+        position: "relative",
+        cursor: "pointer",
+        userSelect: "none",
+        height: "85px",
+      }}
+    >
       <div className="buttonDiv upper" onClick={handleButtonClick}>
         <span
           style={{

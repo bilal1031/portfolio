@@ -1,4 +1,11 @@
-.navbar-item .navbar-brand {
+.nav-link,
+.navbar-brand {
   color: white !important;
-  font-family: "PT Sans Caption";
+  font-family: "PT Sans Caption" !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-nav {
+    display: none;
+  }
 }

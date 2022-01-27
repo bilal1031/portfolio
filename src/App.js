@@ -13,7 +13,7 @@ function App() {
   const [isActive, setIsActive] = useState([1, 0, 0, 0]);
 
   const getActiveState = (index) => {
-    return isActive[index] === 1 ? "translateX(-100%)" : "translateX(0%)";
+    return isActive[index] === 1 ? "-100" : "0";
   };
   return (
     <div id="appDiv" style={{ backgroundColor: colors.primary }}>
