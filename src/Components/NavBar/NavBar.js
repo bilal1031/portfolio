@@ -23,7 +23,7 @@ const NavBar = (props) => {
     let items = [0, 0, 0, 0];
     items[index] = 1;
     props.setIsActive(items);
-    console.log(props.isActive);
+    // console.log(props.isActive);
 
     // navItems.forEach((e) => {
     //   const element = document.getElementById(e.href).style;
@@ -41,7 +41,7 @@ const NavBar = (props) => {
   const handleNavClick = (e) => {
     setIndicatorLocation(e.target.offsetLeft);
     setIndicatorWidth(e.target.clientWidth);
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     if (window.innerWidth > 768) {
       translatePage(e.target.innerHTML);
     }
