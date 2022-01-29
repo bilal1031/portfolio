@@ -42,6 +42,7 @@ const IntroPage = (props) => {
                 <SocialIcon
                   src={githubLogo}
                   onClick={() => window.open("https://github.com/bilal1031")}
+                  alt="bilal-github"
                 />
                 <SocialIcon
                   src={linkedinLogo}
@@ -50,6 +51,7 @@ const IntroPage = (props) => {
                       "https://www.linkedin.com/in/muhammad-bilal-1667381b6/"
                     )
                   }
+                  alt="bilal-linkedin"
                 />
                 <SocialIcon
                   src={gmailLogo}
@@ -58,6 +60,7 @@ const IntroPage = (props) => {
                       "https://mail.google.com/mail/?view=cm&fs=1&to=bilalnaeem166@gmail.com"
                     );
                   }}
+                  alt="bilal-gmail"
                 />
               </div>
             </Row>
