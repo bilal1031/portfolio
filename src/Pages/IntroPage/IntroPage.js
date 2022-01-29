@@ -5,6 +5,8 @@ import AboutButton from "../../Components/AboutButton/AboutButton";
 import Wrapper from "../../Components/Wrapper/Wrapper";
 import "./introPage.css";
 import profilebg from "../../assets/profilebg.png";
+import { githubLogo, linkedinLogo, gmailLogo } from "../../assets";
+import SocialIcon from "../../Components/SocialIcon/SocialIcon";
 
 const IntroPage = (props) => {
   const h1 = {
@@ -17,7 +19,7 @@ const IntroPage = (props) => {
     <Wrapper color={colors.primary} translate={props.translate} {...props}>
       <Row className="d-flex flex-column flex-md-row">
         <Col className="col-12 col-md-7 col-lg-6 d-flex flex-column align-items-xl-center">
-          <Container className="helloDiv col-12 col-xl-6">
+          <Container className="helloDiv col-12 col-xxl-6">
             <Row>
               <Col className="">
                 <h1 style={h1}>Hello!</h1>
@@ -30,17 +32,41 @@ const IntroPage = (props) => {
                 </h1>
               </Col>
             </Row>
-            <Row className="mt-5">
+            <Row className="mt-5" style={{ width: "340px" }}>
               <Col className="">
                 <AboutButton title="About Me" />
               </Col>
+            </Row>
+            <Row className="mt-5" style={{ width: "340px" }}>
+              <div className="d-flex flex-row justify-content-between">
+                <SocialIcon
+                  src={githubLogo}
+                  onClick={() => window.open("https://github.com/bilal1031")}
+                />
+                <SocialIcon
+                  src={linkedinLogo}
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/in/muhammad-bilal-1667381b6/"
+                    )
+                  }
+                />
+                <SocialIcon
+                  src={gmailLogo}
+                  onClick={() => {
+                    window.open(
+                      "https://mail.google.com/mail/?view=cm&fs=1&to=bilalnaeem166@gmail.com"
+                    );
+                  }}
+                />
+              </div>
             </Row>
           </Container>
         </Col>
 
         <Col className="col-12 col-md-5 col-lg-6 d-flex justify-content-xl-center align-items-center">
           <Row className="">
-            <img src={profilebg} />
+            <img src={profilebg} alt="profilebg" />
           </Row>
           {/* <Container className="helloDiv ">
             <Row>

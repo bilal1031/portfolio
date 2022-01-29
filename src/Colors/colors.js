@@ -1,6 +1,8 @@
-export default {
+const colors = {
   primary: "#16213E",
   secondary: "#4DD599",
   secondary_light: "#419B73",
   white: "white",
 };
+
+export default colors;

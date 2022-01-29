@@ -5,17 +5,17 @@
 
 @media only screen and (max-width: 1024px) {
   .helloDiv {
-    padding-left: 80px;
+    padding-left: 30px;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .helloDiv {
-    padding-left: 50px;
+    padding-left: 40px;
   }
 }
 @media only screen and (max-width: 425px) {
   .helloDiv {
-    padding-left: 50px;
+    padding-left: 20px;
   }
 }
