@@ -5,7 +5,7 @@ import AboutButton from "../../Components/AboutButton/AboutButton";
 import Wrapper from "../../Components/Wrapper/Wrapper";
 import "./introPage.css";
 import profilebg from "../../assets/profilebg.png";
-import { githubLogo, linkedinLogo, gmailLogo } from "../../assets";
+import { githubLogo, linkedinLogo, gmailLogo, profile } from "../../assets";
 import SocialIcon from "../../Components/SocialIcon/SocialIcon";
 
 const IntroPage = (props) => {
@@ -68,8 +68,11 @@ const IntroPage = (props) => {
         </Col>
 
         <Col className="col-12 col-md-5 col-lg-6 d-flex justify-content-xl-center align-items-center">
-          <Row className="">
-            <img src={profilebg} alt="profilebg" />
+          <Row
+            className=""
+            // style={{ position: "relative", overflow: "hidder" }}
+          >
+            <img src={profile} alt="profile" />
           </Row>
           {/* <Container className="helloDiv ">
             <Row>
