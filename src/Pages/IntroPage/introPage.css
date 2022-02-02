@@ -3,6 +3,17 @@
   margin-top: 150px;
 }
 
+.social-row {
+  width: 340px;
+}
+.about-div {
+  left: 0vw !important;
+  position: absolute;
+  top: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 1024px) {
   .helloDiv {
     padding-left: 30px;
@@ -13,9 +24,27 @@
   .helloDiv {
     padding-left: 40px;
   }
+  .social-row {
+    margin-left: 40%;
+    width: 100%;
+  }
+  .about-div {
+    position: absolute !important;
+    top: 0vh !important;
+    left: -100vw !important;
+
+    /* transform: translateX(-100%) !important; */
+  }
 }
 @media only screen and (max-width: 425px) {
   .helloDiv {
     padding-left: 20px;
+  }
+  .social-row {
+    margin-left: 0%;
+    width: 100%;
+  }
+  .about-div {
+    height: 180% !important;
   }
 }

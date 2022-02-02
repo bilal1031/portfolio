@@ -4,6 +4,8 @@ import "./aboutButton.css";
 const AboutButton = ({ title }) => {
   const handleButtonClick = (e) => {
     console.log(e);
+    document.getElementById("about-div").style.transform =
+      window.innerWidth > 768 ? "translateY(-91%)" : "translateX(100%) ";
   };
   return (
     <div
