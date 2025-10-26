@@ -1,0 +1,266 @@
+---
+import Menu from "@icons/Menu.astro";
+import { Image } from "astro:assets";
+import type { HeaderProps } from "@types";
+import ThemeToggle from "./ThemeToggle.astro";
+
+type Props = HeaderProps;
+
+const { siteLogo, navLinks } = Astro.props;
+---
+
+<header
+  class="bg-theme border-theme sticky top-0 z-50 mx-auto flex max-w-5xl justify-between border-b px-5 py-6"
+>
+  <a href="/" aria-label="Home link">
+    <Image
+      class="rounded-full"
+      src={siteLogo}
+      width="45"
+      height="45"
+      alt="website logo"
+    />
+  </a>
+
+  <!-- Desktop Navigation -->
+  <nav class="text-theme-muted hidden sm:block" id="desktop-menu">
+    <ul class="flex gap-2">
+      {
+        navLinks.map((link) => (
+          <li class="relative">
+            <a
+              class={`nav-item hover:text-theme after:text-primary relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:opacity-0 after:content-['•']`}
+              href={link.href}
+            >
+              {link.text}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <!-- Desktop Theme Toggle -->
+  <div class="hidden sm:block">
+    <ThemeToggle />
+  </div>
+
+  <!-- Mobile Menu Button -->
+  <button
+    type="button"
+    id="menu-button"
+    class="text-theme-muted px-1.5 sm:hidden"
+    aria-expanded="false"
+    aria-controls="mobile-menu"
+  >
+    <Menu />
+  </button>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    class="fixed inset-0 z-40 sm:hidden"
+    id="mobile-overlay"
+    style="display: none;"
+  >
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div
+      class="bg-theme border-theme fixed right-0 top-0 h-full w-80 max-w-[85vw] transform border-l shadow-2xl transition-transform duration-300 ease-in-out"
+      id="mobile-menu"
+    >
+      <!-- Mobile Menu Header -->
+      <div class="border-theme flex items-center justify-between border-b p-6">
+        <h2 class="text-theme text-lg font-semibold">Menu</h2>
+        <button
+          type="button"
+          id="close-menu"
+          class="text-theme-muted hover:text-theme -mr-2 p-2"
+          aria-label="Close menu"
+        >
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Links -->
+      <nav class="p-6">
+        <ul class="space-y-4">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  class="nav-item hover:text-theme hover:bg-theme-secondary block rounded-lg px-4 py-3 text-base font-medium transition-colors duration-200"
+                  href={link.href}
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Mobile Theme Toggle Section -->
+      <div class="border-theme border-t p-6">
+        <div class="flex items-center justify-between">
+          <span class="text-theme text-sm font-medium">Theme</span>
+          <div class="theme-toggle-wrapper">
+            <ThemeToggle />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu functionality
+  const menuButton = document.querySelector("#menu-button");
+  const closeButton = document.querySelector("#close-menu");
+  const mobileOverlay = document.querySelector("#mobile-overlay");
+  const mobileMenu = document.querySelector("#mobile-menu");
+  const navItems = document.querySelectorAll("#desktop-menu > ul > li > a");
+  const mobileNavItems = document.querySelectorAll(
+    "#mobile-menu nav > ul > li > a",
+  );
+
+  const openMenu = () => {
+    if (mobileOverlay && mobileMenu) {
+      (mobileOverlay as HTMLElement).style.display = "block";
+      (mobileMenu as HTMLElement).style.transform = "translateX(0)";
+      document.body.style.overflow = "hidden";
+      menuButton?.setAttribute("aria-expanded", "true");
+    }
+  };
+
+  const closeMenu = () => {
+    if (mobileMenu && mobileOverlay) {
+      (mobileMenu as HTMLElement).style.transform = "translateX(100%)";
+      setTimeout(() => {
+        (mobileOverlay as HTMLElement).style.display = "none";
+        document.body.style.overflow = "";
+      }, 300);
+      menuButton?.setAttribute("aria-expanded", "false");
+    }
+  };
+
+  // Event listeners
+  menuButton?.addEventListener("click", openMenu);
+  closeButton?.addEventListener("click", closeMenu);
+  mobileOverlay?.addEventListener("click", (e) => {
+    if (e.target === mobileOverlay) {
+      closeMenu();
+    }
+  });
+
+  // Close menu when clicking on nav items
+  mobileNavItems.forEach((item) => {
+    item?.addEventListener("click", closeMenu);
+  });
+
+  // Close menu on escape key
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      mobileOverlay &&
+      (mobileOverlay as HTMLElement).style.display === "block"
+    ) {
+      closeMenu();
+    }
+  });
+
+  // Update navigation based on scroll position with Intersection Observer
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Update desktop nav
+          navItems.forEach((item) => {
+            if (item.getAttribute("href") === `#${entry.target.id}`) {
+              item.classList.add("text-theme", "md:after:opacity-100");
+            } else {
+              item.classList.remove("text-theme", "md:after:opacity-100");
+            }
+          });
+
+          // Update mobile nav
+          mobileNavItems.forEach((item) => {
+            if (item.getAttribute("href") === `#${entry.target.id}`) {
+              item.classList.add("text-primary");
+            } else {
+              item.classList.remove("text-primary");
+            }
+          });
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
+
+  document.querySelectorAll("section").forEach((section) => {
+    observer.observe(section);
+  });
+
+  // Cleanup observer
+  document.onvisibilitychange = () => {
+    if (document.visibilityState === "hidden") {
+      observer.disconnect();
+    } else {
+      document.querySelectorAll("section").forEach((section) => {
+        observer.observe(section);
+      });
+    }
+  };
+</script>
+
+<style>
+  header {
+    animation-timeline: scroll();
+    animation-range: 0 650px;
+  }
+
+  /* Mobile menu initial state */
+  #mobile-menu {
+    transform: translateX(100%);
+  }
+
+  /* Smooth transitions for mobile menu */
+  #mobile-menu {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Mobile menu overlay animation */
+  #mobile-overlay {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Mobile nav item hover effects */
+  #mobile-menu nav a:hover {
+    background-color: var(--color-surface-hover);
+  }
+
+  /* Mobile menu backdrop blur */
+  #mobile-overlay .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+
+  /* Mobile theme toggle styling */
+  .theme-toggle-wrapper .theme-toggle {
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .theme-toggle-wrapper .theme-toggle:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+</style>

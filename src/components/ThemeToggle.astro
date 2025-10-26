@@ -1,0 +1,93 @@
+---
+// Theme toggle component
+---
+
+<button
+  type="button"
+  class="theme-toggle group border-neutral/20 text-neutral relative flex h-10 w-10 items-center justify-center rounded-lg border bg-transparent transition-all duration-200 hover:border-primary/50 hover:text-primary focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-bg focus:outline-none"
+  aria-label="Toggle theme"
+  title="Toggle theme"
+>
+  <!-- Sun icon (visible in dark mode) -->
+  <svg
+    class="h-5 w-5 transition-all duration-200 group-hover:scale-110 dark:block"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="12" cy="12" r="5"></circle>
+    <path
+      d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+    ></path>
+  </svg>
+
+  <!-- Moon icon (visible in light mode) -->
+  <svg
+    class="h-5 w-5 transition-all duration-200 group-hover:scale-110 dark:hidden"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<script>
+  class ThemeToggle {
+    private storageKey: string;
+    private defaultTheme: string;
+
+    constructor(
+      storageKey: string = "theme-preference",
+      defaultTheme: string = "dark",
+    ) {
+      this.storageKey = storageKey;
+      this.defaultTheme = defaultTheme;
+      this.init();
+    }
+
+    private init() {
+      // Set initial theme
+      this.setTheme(this.getStoredTheme() || this.defaultTheme);
+
+      // Add click listeners to all theme toggle buttons
+      const toggleButtons = document.querySelectorAll(".theme-toggle");
+      toggleButtons.forEach((button) => {
+        button.addEventListener("click", () => this.toggleTheme());
+      });
+    }
+
+    private getStoredTheme(): string | null {
+      if (typeof window === "undefined") return null;
+      return localStorage.getItem(this.storageKey);
+    }
+
+    private setStoredTheme(theme: string): void {
+      if (typeof window === "undefined") return;
+      localStorage.setItem(this.storageKey, theme);
+    }
+
+    private setTheme(theme: string): void {
+      if (typeof document === "undefined") return;
+
+      document.documentElement.classList.remove("light", "dark");
+      document.documentElement.classList.add(theme);
+      this.setStoredTheme(theme);
+    }
+
+    private toggleTheme(): void {
+      const currentTheme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      this.setTheme(newTheme);
+    }
+  }
+
+  // Initialize theme toggle when DOM is loaded
+  document.addEventListener("DOMContentLoaded", () => {
+    new ThemeToggle();
+  });
+</script>

@@ -1,0 +1,655 @@
+@import "tailwindcss";
+
+/*
+ * Modern Color Palette System
+ * 
+ * This file implements a comprehensive color system with:
+ * - Light and dark theme support
+ * - Semantic color tokens for better maintainability
+ * - Accessibility-focused color choices
+ * - Modern, professional color palette
+ * 
+ * Color Categories:
+ * - Primary: Indigo (professional, trustworthy)
+ * - Secondary: Cyan (fresh, modern accent)
+ * - Accent: Amber (warm, attention-grabbing)
+ * - Status: Success, Warning, Error, Info
+ * - Neutral: Comprehensive gray scale
+ * 
+ * Usage:
+ * - Use semantic classes like .text-primary, .bg-theme
+ * - Colors automatically adapt to light/dark themes
+ * - Hover states available with .hover: classes
+ */
+
+@theme {
+  --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
+  --font-serif: "Gabarito Variable", ui-serif, serif;
+
+  /* Modern Color Palette - Light Theme */
+  --color-primary: #60a5f9; /* Dodger Blue - Modern, professional */
+  --color-primary-hover: #0066cc; /* Darker blue */
+  --color-primary-light: #4da6ff; /* Lighter blue */
+  --color-primary-dark: #0052a3; /* Darkest blue */
+
+  --color-secondary: #06b6d4; /* Cyan 500 - Fresh accent */
+  --color-secondary-hover: #0891b2; /* Cyan 600 */
+  --color-secondary-light: #67e8f9; /* Cyan 300 */
+
+  --color-accent: #f59e0b; /* Amber 500 - Warm accent */
+  --color-accent-hover: #d97706; /* Amber 600 */
+  --color-accent-light: #fbbf24; /* Amber 400 */
+
+  --color-success: #10b981; /* Emerald 500 */
+  --color-warning: #f59e0b; /* Amber 500 */
+  --color-error: #ef4444; /* Red 500 */
+  --color-info: #3b82f6; /* Blue 500 */
+
+  /* Neutral Colors - Light Theme */
+  --color-white: #ffffff;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+  --color-black: #000000;
+
+  /* Semantic Colors - Light Theme */
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f8fafc;
+  --color-surface-secondary: #f1f5f9;
+  --color-surface-tertiary: #e2e8f0;
+
+  /* Dark Theme Colors */
+  --color-primary-dark: #60a5fa; /* Blue - Bright for dark mode */
+  --color-primary-hover-dark: #93c5fd; /* Lighter blue */
+  --color-primary-light-dark: #bfdbfe; /* Lightest blue */
+  --color-primary-dark-dark: #3b82f6; /* Darker blue */
+
+  --color-secondary-dark: #22d3ee; /* Cyan 400 */
+  --color-secondary-hover-dark: #06b6d4; /* Cyan 500 */
+  --color-secondary-light-dark: #67e8f9; /* Cyan 300 */
+
+  --color-accent-dark: #fbbf24; /* Amber 400 */
+  --color-accent-hover-dark: #f59e0b; /* Amber 500 */
+  --color-accent-light-dark: #fde047; /* Yellow 300 */
+
+  --color-success-dark: #34d399; /* Emerald 400 */
+  --color-warning-dark: #fbbf24; /* Amber 400 */
+  --color-error-dark: #f87171; /* Red 400 */
+  --color-info-dark: #60a5fa; /* Blue 400 */
+
+  /* Semantic Colors - Dark Theme */
+  --color-bg-dark: #0f172a; /* Slate 900 */
+  --color-bg-secondary-dark: #1e293b; /* Slate 800 */
+  --color-bg-tertiary-dark: #334155; /* Slate 700 */
+  --color-text-dark: #f8fafc; /* Slate 50 */
+  --color-text-secondary-dark: #cbd5e1; /* Slate 300 */
+  --color-text-muted-dark: #94a3b8; /* Slate 400 */
+  --color-text-inverse-dark: #0f172a; /* Slate 900 */
+  --color-border-dark: #334155; /* Slate 700 */
+  --color-border-hover-dark: #475569; /* Slate 600 */
+  --color-surface-dark: #1e293b; /* Slate 800 */
+  --color-surface-hover-dark: #334155; /* Slate 700 */
+  --color-surface-secondary-dark: #334155; /* Slate 700 */
+  --color-surface-tertiary-dark: #475569; /* Slate 600 */
+
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.125rem;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1.125rem;
+  --text-base--line-height: 1.625rem;
+  --text-lg: 1.25rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.5rem;
+  --text-xl--line-height: 1.813rem;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 2.125rem;
+  --text-3xl: 2rem;
+  --text-3xl--line-height: 2.375rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.688rem;
+  --text-5xl: 2.5rem;
+  --text-5xl--line-height: 3rem;
+  --text-6xl: 3rem;
+  --text-6xl--line-height: 3.625rem;
+  --text-7xl: 3.75rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 4.5rem;
+  --text-8xl--line-height: 4.875rem;
+  --text-9xl: 6rem;
+  --text-9xl--line-height: 6.625rem;
+
+  --tracking-tightest: -2px;
+  --tracking-tighter: -1px;
+  --tracking-tight: -0.25px;
+}
+
+/* Ensure dark theme is applied by default */
+html {
+  color-scheme: dark;
+}
+
+/* Theme-specific styles */
+:root {
+  /* Dark theme as default to prevent flash */
+  --color-primary: #60a5fa;
+  --color-primary-hover: #93c5fd;
+  --color-primary-light: #bfdbfe;
+  --color-primary-dark: #3b82f6;
+
+  --color-secondary: #22d3ee;
+  --color-secondary-hover: #06b6d4;
+  --color-secondary-light: #67e8f9;
+
+  --color-accent: #fbbf24;
+  --color-accent-hover: #f59e0b;
+  --color-accent-light: #fde047;
+
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+  --color-info: #60a5fa;
+
+  --color-bg: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-tertiary: #334155;
+  --color-text: #ffffff;
+  --color-text-secondary: #e2e8f0;
+  --color-text-muted: #cbd5e1;
+  --color-text-inverse: #0f172a;
+  --color-border: #334155;
+  --color-border-hover: #475569;
+  --color-surface: #1e293b;
+  --color-surface-hover: #334155;
+  --color-surface-secondary: #334155;
+  --color-surface-tertiary: #475569;
+}
+
+.light {
+  /* Light theme overrides */
+  color-scheme: light;
+  --color-primary: #1e90ff;
+  --color-primary-hover: #0066cc;
+  --color-primary-light: #4da6ff;
+  --color-primary-dark: #0052a3;
+
+  --color-secondary: #06b6d4;
+  --color-secondary-hover: #0891b2;
+  --color-secondary-light: #67e8f9;
+
+  --color-accent: #f59e0b;
+  --color-accent-hover: #d97706;
+  --color-accent-light: #fbbf24;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f8fafc;
+  --color-bg-tertiary: #f1f5f9;
+  --color-text: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-hover: #cbd5e1;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f8fafc;
+  --color-surface-secondary: #f1f5f9;
+  --color-surface-tertiary: #e2e8f0;
+}
+
+/* Theme-aware utility classes */
+.bg-theme {
+  background-color: var(--color-bg);
+}
+
+.bg-theme-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+.bg-theme-tertiary {
+  background-color: var(--color-bg-tertiary);
+}
+
+.text-theme {
+  color: var(--color-text);
+}
+
+.text-theme-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-theme-muted {
+  color: var(--color-text-muted);
+}
+
+.text-theme-inverse {
+  color: var(--color-text-inverse);
+}
+
+.border-theme {
+  border-color: var(--color-border);
+}
+
+.border-theme-hover:hover {
+  border-color: var(--color-border-hover);
+}
+
+.surface-theme {
+  background-color: var(--color-surface);
+}
+
+.surface-theme-hover:hover {
+  background-color: var(--color-surface-hover);
+}
+
+.surface-theme-secondary {
+  background-color: var(--color-surface-secondary);
+}
+
+.surface-theme-tertiary {
+  background-color: var(--color-surface-tertiary);
+}
+
+/* Primary color utilities */
+.text-primary {
+  color: var(--color-primary);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.hover\:text-primary:hover {
+  color: var(--color-primary);
+}
+
+.hover\:bg-primary:hover {
+  background-color: var(--color-primary);
+}
+
+.hover\:border-primary:hover {
+  border-color: var(--color-primary);
+}
+
+/* Secondary color utilities */
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.hover\:text-secondary:hover {
+  color: var(--color-secondary);
+}
+
+.hover\:bg-secondary:hover {
+  background-color: var(--color-secondary);
+}
+
+.hover\:border-secondary:hover {
+  border-color: var(--color-secondary);
+}
+
+/* Accent color utilities */
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.hover\:text-accent:hover {
+  color: var(--color-accent);
+}
+
+.hover\:bg-accent:hover {
+  background-color: var(--color-accent);
+}
+
+.hover\:border-accent:hover {
+  border-color: var(--color-accent);
+}
+
+/* Status color utilities */
+.text-success {
+  color: var(--color-success);
+}
+
+.bg-success {
+  background-color: var(--color-success);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.bg-warning {
+  background-color: var(--color-warning);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+.bg-error {
+  background-color: var(--color-error);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+.bg-info {
+  background-color: var(--color-info);
+}
+
+/* Interactive states */
+.hover\:bg-primary-hover:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.hover\:text-primary-hover:hover {
+  color: var(--color-primary-hover);
+}
+
+.hover\:bg-secondary-hover:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.hover\:text-secondary-hover:hover {
+  color: var(--color-secondary-hover);
+}
+
+.hover\:bg-accent-hover:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.hover\:text-accent-hover:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Prevent transitions on theme toggle button to avoid flicker */
+#theme-toggle,
+#theme-toggle * {
+  transition: none;
+}
+
+#theme-toggle {
+  transition: all 0.2s ease;
+}
+
+/* Project Card Backgrounds - Clean & Simple */
+.project-card-bg {
+  background: var(--color-surface);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      var(--color-primary) 0%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      var(--color-secondary) 0%,
+      transparent 25%
+    );
+  opacity: 0.02;
+  z-index: -1;
+}
+
+.project-card-bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.01) 50%,
+    transparent 100%
+  );
+  z-index: -1;
+}
+
+/* Dark mode adjustments */
+.dark .project-card-bg {
+  background: var(--color-surface);
+}
+
+.dark .project-card-bg::before {
+  opacity: 0.03;
+}
+
+.dark .project-card-bg::after {
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.005) 50%,
+    transparent 100%
+  );
+}
+
+/* Hover effects for project cards */
+.project-card-bg:hover::before {
+  opacity: 0.05;
+  transition: opacity 0.3s ease;
+}
+
+.dark .project-card-bg:hover::before {
+  opacity: 0.08;
+}
+
+/* Subtle variety for different cards */
+.project-card-bg:nth-child(2n) {
+  background: var(--color-surface-secondary);
+}
+
+.project-card-bg:nth-child(3n) {
+  background: var(--color-surface);
+}
+
+.dark .project-card-bg:nth-child(2n) {
+  background: var(--color-surface-secondary);
+}
+
+.dark .project-card-bg:nth-child(3n) {
+  background: var(--color-surface);
+}
+
+/* Icon Color System */
+.icon-theme {
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.icon-theme:hover {
+  color: var(--color-text);
+}
+
+.icon-primary {
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+.icon-primary:hover {
+  color: var(--color-primary-hover);
+}
+
+.icon-secondary {
+  color: var(--color-secondary);
+  transition: color 0.2s ease;
+}
+
+.icon-secondary:hover {
+  color: var(--color-secondary-hover);
+}
+
+.icon-accent {
+  color: var(--color-accent);
+  transition: color 0.2s ease;
+}
+
+.icon-accent:hover {
+  color: var(--color-accent-hover);
+}
+
+.icon-success {
+  color: var(--color-success);
+  transition: color 0.2s ease;
+}
+
+.icon-warning {
+  color: var(--color-warning);
+  transition: color 0.2s ease;
+}
+
+.icon-error {
+  color: var(--color-error);
+  transition: color 0.2s ease;
+}
+
+.icon-info {
+  color: var(--color-info);
+  transition: color 0.2s ease;
+}
+
+/* Icon size utilities */
+.icon-xs {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.icon-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-md {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-lg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.icon-xl {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* Specific icon styling */
+.icon-external {
+  color: var(--color-primary);
+  opacity: 0.7;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.icon-external:hover {
+  opacity: 1;
+  color: var(--color-primary-hover);
+}
+
+.icon-check {
+  color: var(--color-success);
+  opacity: 0.8;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
+}
+
+.icon-check:hover {
+  opacity: 1;
+  color: var(--color-success);
+}
+
+.icon-menu {
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
+}
+
+.icon-menu:hover {
+  color: var(--color-text);
+}
+
+/* Dark mode icon adjustments */
+.dark .icon-external {
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+.dark .icon-external:hover {
+  color: var(--color-primary-hover);
+  opacity: 1;
+}
+
+.dark .icon-check {
+  color: var(--color-success);
+  opacity: 0.9;
+}
+
+.dark .icon-menu {
+  color: var(--color-text-muted);
+}
+
+.dark .icon-menu:hover {
+  color: var(--color-text);
+}

@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "site": "bilalnaeem",
+    "public": "dist",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "redirects": [
+      {
+        "source": "https://bilalnaeem.web.app/**",
+        "destination": "https://www.bilalnaeem.web.app/**",
+        "type": 301
+      },
+      {
+        "source": "https://bilalnaeem.web.app",
+        "destination": "https://www.bilalnaeem.web.app",
+        "type": 301
+      }
+    ]
+  }
+}

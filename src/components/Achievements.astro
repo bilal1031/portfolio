@@ -1,0 +1,422 @@
+---
+import type { AchievementProps } from "../types";
+const { achievements } = Astro.props;
+---
+
+<section class="py-16 md:py-24" id="achievements">
+  <div class="mb-12">
+    <h2
+      class="text-theme mb-4 font-serif text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+    >
+      Achievements
+    </h2>
+    <p class="text-theme-muted text-lg font-normal md:text-xl">
+      Key milestones and accomplishments in my journey
+    </p>
+  </div>
+
+  <!-- Horizontal Scroll Container -->
+  <div class="relative mt-8">
+    <!-- Scroll indicators -->
+    <div class="absolute top-1/2 left-0 z-10 -translate-y-1/2">
+      <div
+        class="scroll-indicator-left from-theme bg-gradient-to-r to-transparent opacity-0 transition-opacity duration-300"
+      >
+      </div>
+    </div>
+    <div class="absolute top-1/2 right-0 z-10 -translate-y-1/2">
+      <div
+        class="scroll-indicator-right from-theme bg-gradient-to-l to-transparent opacity-0 transition-opacity duration-300"
+      >
+      </div>
+    </div>
+
+    <!-- Achievements Grid -->
+    <div
+      class="achievements-scroll scrollbar-hide flex gap-8 overflow-x-auto py-4 px-2"
+      style="scroll-behavior: smooth;"
+    >
+      {
+        achievements.map((achievement:AchievementProps , index: number) => (
+          <div
+            class="achievement-card group border-theme-muted/10 from-theme-secondary/40 via-theme-secondary/20 to-theme-secondary/30 relative flex-shrink-0 cursor-pointer rounded-3xl border bg-gradient-to-br p-8 backdrop-blur-md transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/20"
+            style="min-width: 320px; max-width: 360px;"
+            data-type={achievement.type}
+            data-link={achievement.link}
+            data-index={index}
+          >
+            <!-- Background Pattern -->
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
+            
+            <!-- Content -->
+            <div class="relative z-10 flex items-start gap-6 h-full">
+         
+              <div class="min-w-0 flex-1 flex flex-col h-full">
+                <div class="mb-4 flex items-center gap-3">
+                  <div class="flex-1">
+                    <h3 class="text-theme text-xl leading-tight font-semibold transition-colors duration-300 group-hover:text-primary">
+                      {achievement.title}
+                    </h3>
+                    {achievement.year && (
+                      <p class="text-primary text-sm font-medium mt-1 transition-colors duration-300 group-hover:text-primary/80">
+                        {achievement.year}
+                      </p>
+                    )}
+                  </div>
+                  <div class="flex-shrink-0">
+                        <div class="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 text-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:bg-gradient-to-br group-hover:from-primary/30 group-hover:via-primary/20 group-hover:to-primary/10">
+                          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 to-transparent"></div>
+                          <span class="achievement-icon relative z-10 transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-12 group-hover:drop-shadow-lg">
+                            {achievement.icon}
+                          </span>
+                        </div>
+                      </div>
+                </div>
+                <p class="text-theme-muted text-base leading-relaxed mb-4 transition-colors duration-300 group-hover:text-theme flex-grow">
+                  {achievement.description}
+                </p>
+                
+                  <div class="mt-auto">
+                    <span class="inline-flex items-center gap-2 text-primary text-sm font-medium bg-gradient-to-r from-primary/20 to-primary/10 px-4 py-2 rounded-full backdrop-blur-sm border border-primary/20 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/20 group-hover:shadow-lg group-hover:shadow-primary/20">
+                      <div class="w-2 h-2 rounded-full bg-primary/60"></div>
+                      Recognition
+                    </span>
+                  </div>
+          
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Scroll Navigation -->
+  <div class="mt-8 flex justify-center gap-4">
+    <button
+      class="scroll-btn-left group border-theme-muted/20 bg-theme-secondary/30 flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20"
+      aria-label="Scroll left"
+    >
+      <svg
+        class="text-theme-muted h-5 w-5 transition-all duration-300 group-hover:text-primary"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button
+      class="scroll-btn-right group border-theme-muted/20 bg-theme-secondary/30 flex h-12 w-12 items-center justify-center rounded-xl border backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20"
+      aria-label="Scroll right"
+    >
+      <svg
+        class="text-theme-muted h-5 w-5 transition-all duration-300 group-hover:text-primary"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .achievements-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .achievements-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scroll-indicator-left,
+  .scroll-indicator-right {
+    width: 40px;
+    height: 60px;
+    pointer-events: none;
+  }
+
+  .achievement-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease-in-out;
+  }
+
+  .achievement-card:hover::before {
+    left: 100%;
+  }
+
+  .achievement-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .filter-tab {
+    color: rgb(var(--theme-muted));
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .filter-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1), rgba(var(--secondary-rgb), 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .filter-tab.active {
+    color: rgb(var(--theme));
+    background: linear-gradient(135deg, rgb(var(--theme-secondary)), rgba(var(--primary-rgb), 0.1));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(var(--primary-rgb), 0.2);
+  }
+
+  .filter-tab:hover:not(.active) {
+    color: rgb(var(--primary));
+    background: rgba(var(--primary-rgb), 0.1);
+  }
+
+  .filter-tab:hover:not(.active)::before {
+    opacity: 1;
+  }
+
+  .achievement-card.hidden {
+    display: none;
+  }
+
+  /* Add subtle animation to achievement cards on load */
+  .achievement-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .achievement-card:nth-child(1) { animation-delay: 0.1s; }
+  .achievement-card:nth-child(2) { animation-delay: 0.2s; }
+  .achievement-card:nth-child(3) { animation-delay: 0.3s; }
+  .achievement-card:nth-child(4) { animation-delay: 0.4s; }
+  .achievement-card:nth-child(5) { animation-delay: 0.5s; }
+  .achievement-card:nth-child(6) { animation-delay: 0.6s; }
+  .achievement-card:nth-child(7) { animation-delay: 0.7s; }
+  .achievement-card:nth-child(8) { animation-delay: 0.8s; }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Enhanced icon animations */
+  .achievement-icon {
+    display: inline-block;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center;
+  }
+
+  .achievement-card:hover .achievement-icon {
+    animation: iconBounce 0.6s ease-out;
+    filter: brightness(1.2) saturate(1.1);
+  }
+
+  @keyframes iconBounce {
+    0% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.15) rotate(6deg);
+    }
+    50% {
+      transform: scale(1.1) rotate(12deg);
+    }
+    75% {
+      transform: scale(1.05) rotate(8deg);
+    }
+    100% {
+      transform: scale(1.1) rotate(12deg);
+    }
+  }
+
+  /* Subtle pulsing effect for icons */
+  .achievement-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(var(--primary-rgb), 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .achievement-card:hover .achievement-icon::before {
+    transform: translate(-50%, -50%) scale(1.5);
+    animation: iconPulse 1s ease-out infinite;
+  }
+
+  @keyframes iconPulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: translate(-50%, -50%) scale(1.5);
+    }
+    50% {
+      opacity: 0.1;
+      transform: translate(-50%, -50%) scale(2);
+    }
+  }
+</style>
+
+<script>
+  // Horizontal scroll functionality
+  const scrollContainer = document.querySelector(".achievements-scroll");
+  const leftBtn = document.querySelector(".scroll-btn-left");
+  const rightBtn = document.querySelector(".scroll-btn-right");
+  const leftIndicator = document.querySelector(".scroll-indicator-left");
+  const rightIndicator = document.querySelector(".scroll-indicator-right");
+
+  if (scrollContainer && leftBtn && rightBtn) {
+    const scrollAmount = 300;
+
+    // Scroll functions
+    const scrollLeft = () => {
+      scrollContainer.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    };
+
+    const scrollRight = () => {
+      scrollContainer.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    };
+
+    // Update indicators based on scroll position
+    const updateIndicators = () => {
+      const { scrollLeft: left, scrollWidth, clientWidth } = scrollContainer;
+      const isAtStart = left <= 0;
+      const isAtEnd = left >= scrollWidth - clientWidth - 1;
+
+      if (leftIndicator) {
+        (leftIndicator as HTMLElement).style.opacity = isAtStart ? "0" : "1";
+      }
+      if (rightIndicator) {
+        (rightIndicator as HTMLElement).style.opacity = isAtEnd ? "0" : "1";
+      }
+    };
+
+    // Event listeners
+    leftBtn.addEventListener("click", scrollLeft);
+    rightBtn.addEventListener("click", scrollRight);
+    scrollContainer.addEventListener("scroll", updateIndicators);
+
+    // Initial indicator state
+    updateIndicators();
+
+    // Touch/swipe support for mobile
+    let isScrolling = false;
+    scrollContainer.addEventListener("touchstart", () => {
+      isScrolling = true;
+    });
+
+    scrollContainer.addEventListener("touchend", () => {
+      isScrolling = false;
+      updateIndicators();
+    });
+  }
+
+  // Filter functionality
+  const filterTabs = document.querySelectorAll(".filter-tab");
+  const achievementCards = document.querySelectorAll(".achievement-card");
+
+  const filterAchievements = (filterType: string) => {
+    achievementCards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+      const cardType = cardElement.dataset.type;
+
+      if (filterType === "all" || cardType === filterType) {
+        cardElement.classList.remove("hidden");
+      } else {
+        cardElement.classList.add("hidden");
+      }
+    });
+
+    // Update active tab
+    filterTabs.forEach((tab) => {
+      const tabElement = tab as HTMLElement;
+      tabElement.classList.remove("active");
+      if (tabElement.dataset.filter === filterType) {
+        tabElement.classList.add("active");
+      }
+    });
+
+    // Reset scroll position when filtering
+    if (scrollContainer) {
+      scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  };
+
+  // Add event listeners to filter tabs
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const filterType = (tab as HTMLElement).dataset.filter;
+      if (filterType) {
+        filterAchievements(filterType);
+      }
+    });
+  });
+
+  // Add click functionality to achievement cards
+  achievementCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      const cardElement = card as HTMLElement;
+      const link = cardElement.dataset.link;
+      
+      if (link) {
+        window.open(link, "_blank", "noopener,noreferrer");
+      }
+    });
+  });
+</script>

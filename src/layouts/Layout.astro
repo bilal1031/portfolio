@@ -1,0 +1,223 @@
+---
+import Header from "@components/Header.astro";
+import "@fontsource/be-vietnam-pro";
+import "@fontsource-variable/gabarito";
+import { SITE_CONFIG } from "@config";
+import Footer from "@components/Footer.astro";
+
+const {
+  title,
+  description,
+  siteLogo,
+  navLinks,
+  lang,
+  author,
+  socialLinks,
+  socialImage,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+  theme,
+} = SITE_CONFIG;
+
+const ogImgUrl = canonicalURL + socialImage;
+---
+
+<!doctype html>
+<html
+  lang={lang}
+  class="scroll-pt-16 scroll-smooth"
+  data-theme={theme?.defaultTheme || "dark"}
+  style="scroll-behavior: smooth;"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/bilal-small.jpeg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/bilal-small.jpeg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Enhanced SEO Meta Tags -->
+    <meta
+      name="keywords"
+      content="Bilal Naeem, Mobile App Developer, React Native Developer, Co-Founder INFILP, Team Lead, React Developer, TypeScript Developer, Mobile App Development, Cross-platform Development, iOS Developer, Android Developer, Fintech Apps, Healthcare Apps, E-commerce Apps, Stripe Integration, OAuth Authentication, Software Consulting, Remote Developer"
+    />
+    <meta
+      name="google-site-verification"
+      content="T53aLShM1oQsaaiv_qTPpNTImjpkRTzkl3yUo0RUADQ"
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImgUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Bilal Naeem - Co-Founder & Team Lead at INFILP | Expert Mobile App Developer | React Native Specialist"
+    />
+    <meta
+      property="og:site_name"
+      content="Bilal Naeem - Mobile App Developer & Software Engineer"
+    />
+    <meta property="og:updated_time" content={new Date().toISOString()} />
+    <meta property="profile:first_name" content="Bilal" />
+    <meta property="profile:last_name" content="Naeem" />
+    <meta property="profile:username" content="bilalnaeem" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImgUrl} />
+    <meta
+      property="twitter:image:alt"
+      content="Bilal Naeem - Co-Founder & Team Lead at INFILP | Expert Mobile App Developer | React Native Specialist"
+    />
+    <meta property="twitter:creator" content="@bilalnaeem" />
+    <meta property="twitter:site" content="@bilalnaeem" />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#5755ff" />
+    <meta name="msapplication-TileColor" content="#5755ff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
+
+    <!-- Theme initialization script (prevents flash of wrong theme) -->
+    <script is:inline>
+      (function () {
+        const storageKey = `${theme?.storageKey || "theme-preference"}`;
+        const defaultTheme = `${theme?.defaultTheme || "dark"}`;
+
+        function getStoredTheme() {
+          try {
+            return localStorage.getItem(storageKey);
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function setTheme(theme) {
+          document.documentElement.classList.remove("light", "dark");
+          document.documentElement.classList.add(theme);
+          document.documentElement.setAttribute("data-theme", theme);
+        }
+
+        // Apply theme immediately to prevent flash
+        const storedTheme = getStoredTheme();
+        const themeToApply = storedTheme || defaultTheme;
+        setTheme(themeToApply);
+      })();
+    </script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bilal Naeem",
+        "givenName": "Bilal",
+        "familyName": "Naeem",
+        "jobTitle": "Co-Founder & Team Lead at INFILP",
+        "description": "Expert mobile app developer and software engineer specializing in React Native, React, TypeScript, and AI-powered solutions. Leading a top 0.1% Fiverr development agency with 50+ successful global projects.",
+        "url": "https://bilalnaeem.web.app/",
+        "image": "https://bilalnaeem.web.app/bilal-big.jpeg",
+        "email": "bilalnaeem166@gmail.com",
+        "sameAs": [
+          "https://www.linkedin.com/in/bilal~naeem/",
+          "https://github.com/bilal1031"
+        ],
+        "knowsAbout": [
+          "Mobile App Development",
+          "React Native Development",
+          "React Development",
+          "TypeScript Programming",
+          "JavaScript Development",
+          "iOS App Development",
+          "Android App Development",
+          "Cross-platform Development",
+          "Full Stack Development",
+          "Node.js Backend Development",
+          "AI Integration",
+          "Machine Learning",
+          "Stripe Payment Integration",
+          "OAuth Authentication",
+          "Fintech Applications",
+          "Healthcare Applications",
+          "E-commerce Applications",
+          "SaaS Development",
+          "Software Architecture",
+          "Team Leadership",
+          "Technical Consulting",
+          "Code Review",
+          "Agile Development",
+          "API Development",
+          "Cloud Technologies"
+        ],
+        "worksFor": [
+          {
+            "@type": "Organization",
+            "name": "INFILP",
+            "jobTitle": "Co-Founder & Team Lead",
+            "description": "Premier software development agency ranked in Top 0.1% on Fiverr, specializing in mobile and web applications"
+          }
+        ],
+        "alumniOf": "Fiverr",
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Mobile App Developer & Software Engineer",
+          "occupationLocation": {
+            "@type": "Place",
+            "name": "Remote"
+          },
+          "skills": [
+            "React Native",
+            "React",
+            "TypeScript",
+            "JavaScript",
+            "Mobile App Development",
+            "iOS Development",
+            "Android Development",
+            "Cross-platform Development",
+            "Node.js",
+            "Full Stack Development",
+            "AI Integration",
+            "Machine Learning",
+            "Stripe Integration",
+            "OAuth Authentication"
+          ]
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-theme text-theme font-sans">
+    <Header siteLogo={siteLogo} navLinks={navLinks} />
+    <main class="mx-auto max-w-3xl px-5" role="main">
+      <slot />
+    </main>
+    <Footer socialLinks={socialLinks} />
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+import Section from "./Section.astro";
+import type { ProjectProps } from "@types";
+
+interface Props {
+  projects: ProjectProps[];
+}
+
+const { projects } = Astro.props;
+---
+
+<Section text="Featured Projects" href="projects">
+  {
+    projects.map(({ name, summary, image, linkPreview }, index) => {
+      const top = 98 + index * 40;
+      return (
+        <div
+          style={`top: ${top}px;`}
+          class="group border-theme sticky mb-12 overflow-hidden rounded-2xl border shadow-lg shadow-primary/5 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10"
+        >
+          <div class="project-card-bg relative z-[1] grid h-[450px] w-full grid-rows-2 rounded-2xl sm:grid-cols-2 sm:grid-rows-1 md:h-96">
+            <div class="relative z-10 px-6 pt-12">
+              <h3 class="mb-5 font-serif text-3xl font-medium text-primary transition-colors duration-300 group-hover:text-primary-hover">
+                {name}
+              </h3>
+              <p class="text-theme-muted text-base leading-relaxed">
+                {summary}
+              </p>
+              <div class="text-theme flex flex-wrap gap-5 pt-10">
+                <a
+                  href={linkPreview}
+                  target="_blank"
+                  class="group/link inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors duration-200 after:relative after:bottom-[-2px] after:opacity-60 after:transition-opacity after:duration-200 after:content-[url(/external.svg)] group-hover/link:after:opacity-100 hover:text-primary-hover"
+                >
+                  Preview
+                </a>
+              </div>
+            </div>
+            <div class="relative overflow-hidden">
+              <img
+                class="absolute -right-8 -bottom-8 h-[255px] w-[80%] rounded-tr-xl rounded-bl-2xl object-contain md:-right-4 md:-bottom-4 md:h-auto md:w-[95%]"
+                src={image}
+                alt={name}
+                width="736"
+                height="483"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</Section>

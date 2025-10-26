@@ -1,0 +1,21 @@
+{
+  "name": "Bilal Naeem - Software Engineer Portfolio",
+  "short_name": "Bilal Naeem",
+  "description": "I build things for the mobile and web. Interested in AI and machine learning.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#5755ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "software engineer"],
+  "lang": "en",
+  "dir": "ltr"
+}
