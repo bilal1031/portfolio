@@ -29,7 +29,7 @@ const { siteLogo, navLinks } = Astro.props;
         navLinks.map((link) => (
           <li class="relative">
             <a
-              class={`nav-item hover:text-theme after:text-primary relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:opacity-0 after:content-['•']`}
+              class={`nav-item hover:text-theme relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•']`}
               href={link.href}
             >
               {link.text}
@@ -64,7 +64,7 @@ const { siteLogo, navLinks } = Astro.props;
   >
     <div class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
     <div
-      class="bg-theme border-theme fixed right-0 top-0 h-full w-80 max-w-[85vw] transform border-l shadow-2xl transition-transform duration-300 ease-in-out"
+      class="bg-theme border-theme fixed top-0 right-0 h-full w-80 max-w-[85vw] transform border-l shadow-2xl transition-transform duration-300 ease-in-out"
       id="mobile-menu"
     >
       <!-- Mobile Menu Header -->

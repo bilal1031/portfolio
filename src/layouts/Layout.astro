@@ -109,8 +109,8 @@ const ogImgUrl = canonicalURL + socialImage;
     <!-- Theme initialization script (prevents flash of wrong theme) -->
     <script is:inline>
       (function () {
-        const storageKey = `${theme?.storageKey || "theme-preference"}`;
-        const defaultTheme = `${theme?.defaultTheme || "dark"}`;
+        const storageKey = `${"theme-preference"}`;
+        const defaultTheme = `${"dark"}`;
 
         function getStoredTheme() {
           try {

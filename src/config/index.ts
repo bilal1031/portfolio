@@ -61,35 +61,40 @@ export const SITE_CONTENT: SiteContent = {
   projects: [
     {
       name: "Wobo",
-      summary: "See case study for details.",
+      summary:
+        "Fitness app connecting athletes with private gyms, boxing rings, and courts. Features secure Stripe payments, motivational audio (DRIPS), venue management, and real-time communication.",
       linkPreview: "https://infilp.com/portfolio/wobo",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/WOBO%2Fsolution.webp?alt=media&token=4da5ed20-ef0d-4e47-86f8-716a46940456",
     },
     {
       name: "ServiceHub",
-      summary: "See case study for details.",
+      summary:
+        "Platform connecting users with trusted service providers across industries. Features real-time notifications, smart calendar, seamless booking, and communication tools.",
       linkPreview: "https://infilp.com/portfolio/servicehub",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/ServiceHub%2Fsolution.webp?alt=media&token=60116336-7261-4c58-9182-cccbd561353a",
     },
     {
       name: "Heurica",
-      summary: "See case study for details.",
+      summary:
+        "App connecting PhD candidates with research collaborators worldwide. Features project profiles, community engagement, in-app messaging, and AI content moderation.",
       linkPreview: "https://infilp.com/portfolio/heurica",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Heurica%2Fsolution.webp?alt=media&token=d3aff4a6-b6ab-4415-9e14-147598f9b39f",
     },
     {
       name: "VetEye",
-      summary: "See case study for details.",
+      summary:
+        "Educational app for veterinary ophthalmology students featuring eye disease library, interactive board exam quizzes, expert video lectures with certificates.",
       linkPreview: "https://infilp.com/portfolio/veteye",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/VetEye%2Fsolution.webp?alt=media&token=466ee2f1-63f7-4e55-9b58-cbf32e540b6a",
     },
     {
       name: "Easy As Pie Budget",
-      summary: "See case study for details.",
+      summary:
+        "Expense management app for individuals, couples, and families. Features budget tracking, customizable categories, recurring expenses, and savings goals.",
       linkPreview: "https://infilp.com/portfolio/easy-as-pie-budget",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Easy%20As%20Pie%20Budget%2Fsolution.webp?alt=media&token=065567ca-32d3-40d1-8405-d9608eea55dd",
