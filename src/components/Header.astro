@@ -29,7 +29,7 @@ const { siteLogo, navLinks } = Astro.props;
         navLinks.map((link) => (
           <li class="relative">
             <a
-              class={`nav-item hover:text-theme relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•']`}
+              class="nav-item active-indicator hover:text-theme relative block p-2 text-sm font-medium transition-all duration-500"
               href={link.href}
             >
               {link.text}
@@ -178,48 +178,51 @@ const { siteLogo, navLinks } = Astro.props;
     }
   });
 
-  // Update navigation based on scroll position with Intersection Observer
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Update desktop nav
-          navItems.forEach((item) => {
-            if (item.getAttribute("href") === `#${entry.target.id}`) {
-              item.classList.add("text-theme", "md:after:opacity-100");
-            } else {
-              item.classList.remove("text-theme", "md:after:opacity-100");
-            }
-          });
+  // Update navigation based on scroll position
+  function updateActiveNav() {
+    const sections = document.querySelectorAll("section");
+    const scrollPos = window.scrollY + 200;
+    let activeSection = "";
+    let minDistance = Infinity;
 
-          // Update mobile nav
-          mobileNavItems.forEach((item) => {
-            if (item.getAttribute("href") === `#${entry.target.id}`) {
-              item.classList.add("text-primary");
-            } else {
-              item.classList.remove("text-primary");
-            }
-          });
+    sections.forEach((section) => {
+      const sectionTop = (section as HTMLElement).offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionBottom = sectionTop + sectionHeight;
+
+      // Check if section is in viewport
+      if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
+        const distance = Math.abs(scrollPos - (sectionTop + sectionHeight / 2));
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeSection = section.id;
         }
-      });
-    },
-    { threshold: 0.5 },
-  );
+      }
+    });
 
-  document.querySelectorAll("section").forEach((section) => {
-    observer.observe(section);
-  });
+    // Update desktop nav
+    navItems.forEach((item) => {
+      const href = item.getAttribute("href");
+      if (href === `#${activeSection}`) {
+        item.classList.add("is-active");
+      } else {
+        item.classList.remove("is-active");
+      }
+    });
 
-  // Cleanup observer
-  document.onvisibilitychange = () => {
-    if (document.visibilityState === "hidden") {
-      observer.disconnect();
-    } else {
-      document.querySelectorAll("section").forEach((section) => {
-        observer.observe(section);
-      });
-    }
-  };
+    // Update mobile nav
+    mobileNavItems.forEach((item) => {
+      const href = item.getAttribute("href");
+      if (href === `#${activeSection}`) {
+        item.classList.add("is-active");
+      } else {
+        item.classList.remove("is-active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveNav);
+  window.addEventListener("load", updateActiveNav);
 </script>
 
 <style>
@@ -262,5 +265,34 @@ const { siteLogo, navLinks } = Astro.props;
   .theme-toggle-wrapper .theme-toggle:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
+  }
+
+  /* Active navigation indicator */
+  .nav-item.active-indicator {
+    position: relative;
+  }
+
+  .nav-item.active-indicator::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-item.active-indicator.is-active::after {
+    width: 100%;
+  }
+
+  .nav-item.active-indicator.is-active {
+    color: rgb(var(--color-theme));
+  }
+
+  /* Mobile active state */
+  #mobile-menu nav a.is-active {
+    color: rgb(var(--color-primary));
   }
 </style>
