@@ -2,13 +2,15 @@
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
 import type { AboutProps, HeroProps } from "@types";
+import { SECTION_SUBTITLES, SITE_CONTENT } from "@config";
 
 type Props = AboutProps & Pick<HeroProps, "name">;
 
 const { description, image, name } = Astro.props;
+const email = SITE_CONTENT.hero.email;
 ---
 
-<Section text="About Me" href="about">
+<Section text="About Me" href="about" subtitle={SECTION_SUBTITLES.about}>
   <div class="flex flex-col items-center gap-12 md:flex-row md:gap-8">
     <div class="w-auto md:pr-5">
       <p class="text-theme-muted mb-6 text-base">
@@ -16,7 +18,7 @@ const { description, image, name } = Astro.props;
       </p>
       <div class="flex flex-wrap gap-3">
         <a
-          href="mailto:bilalnaeem166@gmail.com"
+          href={`mailto:${email}`}
           class="inline-flex items-center gap-2 rounded-lg bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-colors duration-200 hover:bg-primary/20"
         >
           Contact Me

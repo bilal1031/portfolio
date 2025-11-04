@@ -1,6 +1,7 @@
 ---
 import Section from "./Section.astro";
 import type { ExperienceProps } from "@types";
+import { SECTION_SUBTITLES } from "@config";
 
 interface Props {
   experience: ExperienceProps[];
@@ -9,7 +10,11 @@ interface Props {
 const { experience } = Astro.props;
 ---
 
-<Section text="Work Experience" href="experience">
+<Section
+  text="Work Experience"
+  href="experience"
+  subtitle={SECTION_SUBTITLES.experience}
+>
   {
     experience.map(({ company, position, startDate, endDate, summary }) => (
       <div class="mb-10">

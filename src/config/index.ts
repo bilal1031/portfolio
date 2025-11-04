@@ -4,7 +4,7 @@ export const SITE_CONFIG: SiteConfig = {
   title: "Bilal Naeem — Mobile App Developer & Co-Founder at INFILP",
   author: "Bilal Naeem",
   description:
-    "Co-Founder & Lead Engineer at INFILP, a top 0.1% Fiverr development agency. Expert mobile app developer crafting innovative solutions with React Native, React, TypeScript, and AI-powered technologies. Delivering exceptional user experiences for clients worldwide.",
+    "Co-Founder & Lead Engineer at INFILP, one of the Fiverr top development agency. Expert mobile app developer crafting innovative solutions with React Native, React, TypeScript, and AI-powered technologies. Delivering exceptional user experiences for clients worldwide.",
   lang: "en",
   siteLogo: "/bilal-small.jpeg",
   navLinks: [
@@ -18,7 +18,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "LinkedIn", href: "https://www.linkedin.com/in/bilal~naeem/" },
     { text: "Github", href: "https://github.com/bilal1031" },
   ],
-  socialImage: "",
+  socialImage: "/bilal-small.jpeg",
   canonicalURL: "https://bilalnaeem.web.app/",
   theme: {
     defaultTheme: "dark",
@@ -26,12 +26,19 @@ export const SITE_CONFIG: SiteConfig = {
   },
 };
 
+export const SECTION_SUBTITLES = {
+  experience: "My professional journey and career highlights",
+  projects: "Innovative solutions I've built for clients worldwide",
+  achievements: "Key milestones and accomplishments in my journey",
+  about: "Get to know me beyond the code",
+};
+
 export const SITE_CONTENT: SiteContent = {
   hero: {
     name: "Bilal Naeem",
     specialty: "Co-Founder & Lead Engineer at INFILP",
     summary:
-      "Expert mobile app developer and software engineer crafting cutting-edge solutions with React Native, React, TypeScript, and AI-powered technologies. Leading a top 0.1% Fiverr development agency, transforming ideas into exceptional digital experiences for clients worldwide.",
+      "Building mobile apps that make a difference. Transforming ideas into exceptional digital experiences with React Native, TypeScript, and AI-powered solutions.",
     email: "bilalnaeem166@gmail.com",
   },
   experience: [
@@ -41,7 +48,7 @@ export const SITE_CONTENT: SiteContent = {
       startDate: "Mar 2023",
       endDate: "Present",
       summary: [
-        "Co-founded INFILP, a premier software development agency ranked in the Top 0.1% on Fiverr, transforming complex business requirements into intuitive mobile and web applications for clients worldwide.",
+        "Co-founded INFILP, a premier software development agency ranked as a top agency on Fiverr, transforming complex business requirements into intuitive mobile and web applications for clients worldwide.",
         "Led cross-functional development teams in creating scalable React Native and React applications, implementing architectures that support rapid user growth while achieving 100% client satisfaction.",
         "Specialized in AI-powered mobile solutions, Stripe payment integrations, and OAuth authentication systems, delivering solutions that consistently exceed client expectations and drive business results.",
       ],
@@ -130,7 +137,7 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   about: {
-    description: `Passionate Co-Founder & Lead Engineer at INFILP, where I transform innovative ideas into powerful mobile applications. Specializing in React Native, React, TypeScript, and AI-powered solutions, I've helped businesses across fintech, healthcare, and e-commerce achieve their digital transformation goals. I'm passionate about creating technology that makes a real difference in people's lives. Available for consulting and technical leadership opportunities.`,
+    description: `I'm passionate about creating technology that solves real problems and makes a tangible impact. When I'm not coding, I'm constantly learning, experimenting with new frameworks, and staying ahead of the curve in mobile development. I believe great software comes from understanding both the technical and human sides of a problem. Whether it's helping a startup bring their vision to life or consulting on complex technical challenges, I'm always excited to collaborate on projects that push boundaries and create value.`,
     image: "/bilal-big.jpeg",
   },
 };

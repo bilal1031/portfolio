@@ -1,6 +1,7 @@
 ---
 import Section from "./Section.astro";
 import type { ProjectProps } from "@types";
+import { SECTION_SUBTITLES } from "@config";
 
 interface Props {
   projects: ProjectProps[];
@@ -9,7 +10,11 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<Section text="Featured Projects" href="projects">
+<Section
+  text="Featured Projects"
+  href="projects"
+  subtitle={SECTION_SUBTITLES.projects}
+>
   {
     projects.map(({ name, summary, image, linkPreview }, index) => {
       const top = 98 + index * 40;

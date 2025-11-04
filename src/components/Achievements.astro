@@ -1,5 +1,6 @@
 ---
 import type { AchievementProps } from "../types";
+import { SECTION_SUBTITLES } from "@config";
 const { achievements } = Astro.props;
 ---
 
@@ -11,7 +12,7 @@ const { achievements } = Astro.props;
       Achievements
     </h2>
     <p class="text-theme-muted text-lg font-normal md:text-xl">
-      Key milestones and accomplishments in my journey
+      {SECTION_SUBTITLES.achievements}
     </p>
   </div>
 
