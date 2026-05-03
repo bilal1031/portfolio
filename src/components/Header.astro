@@ -12,7 +12,7 @@ const { siteLogo, navLinks } = Astro.props;
 <header
   class="border-theme bg-theme sticky top-0 z-50 w-full border-b"
 >
-  <!-- Toolbar only: blur here so fixed #mobile-overlay is not trapped (viewport‑relative) -->
+  <!-- Toolbar only: blur here so fixed #mobile-overlay is viewport-relative, not clipped to the bar -->
   <div
     class="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-5 backdrop-blur-md md:px-8"
   >
@@ -76,7 +76,7 @@ const { siteLogo, navLinks } = Astro.props;
     >
     </div>
     <div
-      class="bg-theme border-theme pointer-events-auto fixed top-0 right-0 z-10 flex h-full w-[min(100vw,22rem)] max-w-[100vw] min-w-0 flex-col border-l shadow-2xl transition-transform duration-300 ease-in-out"
+      class="bg-theme border-theme pointer-events-auto fixed top-0 right-0 z-10 flex h-full w-[88vw] max-w-[22rem] min-w-0 flex-col border-l shadow-2xl transition-transform duration-300 ease-in-out"
       id="mobile-menu"
     >
       <!-- Mobile Menu Header -->
@@ -104,7 +104,7 @@ const { siteLogo, navLinks } = Astro.props;
       </div>
 
       <!-- Mobile Navigation Links -->
-      <nav class="max-h-[calc(100vh-9rem)] overflow-y-auto px-4 py-4">
+      <nav class="min-h-0 flex-1 overflow-y-auto px-4 py-4">
         <ul class="space-y-2">
           {
             navLinks.map((link) => (
@@ -139,6 +139,7 @@ const { siteLogo, navLinks } = Astro.props;
   const menuButton = document.querySelector("#menu-button");
   const closeButton = document.querySelector("#close-menu");
   const mobileOverlay = document.querySelector("#mobile-overlay");
+  const drawerBackdrop = document.querySelector("[data-drawer-backdrop]");
   const mobileMenu = document.querySelector("#mobile-menu");
   const navItems = document.querySelectorAll("#desktop-menu > ul > li > a");
   const mobileNavItems = document.querySelectorAll(
@@ -148,6 +149,7 @@ const { siteLogo, navLinks } = Astro.props;
   const openMenu = () => {
     if (mobileOverlay && mobileMenu) {
       (mobileOverlay as HTMLElement).style.display = "block";
+      mobileOverlay.setAttribute("aria-hidden", "false");
       (mobileMenu as HTMLElement).style.transform = "translateX(0)";
       document.body.style.overflow = "hidden";
       document.body.style.touchAction = "none";
@@ -160,6 +162,7 @@ const { siteLogo, navLinks } = Astro.props;
       (mobileMenu as HTMLElement).style.transform = "translateX(100%)";
       setTimeout(() => {
         (mobileOverlay as HTMLElement).style.display = "none";
+        mobileOverlay.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
         document.body.style.touchAction = "";
       }, 300);
@@ -170,10 +173,8 @@ const { siteLogo, navLinks } = Astro.props;
   // Event listeners
   menuButton?.addEventListener("click", openMenu);
   closeButton?.addEventListener("click", closeMenu);
-  mobileOverlay?.addEventListener("click", (e) => {
-    if (e.target === mobileOverlay) {
-      closeMenu();
-    }
+  drawerBackdrop?.addEventListener("click", () => {
+    closeMenu();
   });
 
   // Close menu when clicking on nav items
