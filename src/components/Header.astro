@@ -10,8 +10,12 @@ const { siteLogo, navLinks } = Astro.props;
 ---
 
 <header
-  class="bg-theme border-theme sticky top-0 z-50 mx-auto flex w-full max-w-5xl items-center justify-between border-b px-5 py-5 backdrop-blur md:px-8"
+  class="border-theme bg-theme sticky top-0 z-50 w-full border-b"
 >
+  <!-- Toolbar only: blur here so fixed #mobile-overlay is not trapped (viewport‑relative) -->
+  <div
+    class="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-5 backdrop-blur-md md:px-8"
+  >
   <a href="/" aria-label="Home link">
     <Image
       class="rounded-full"
@@ -56,16 +60,23 @@ const { siteLogo, navLinks } = Astro.props;
   >
     <Menu />
   </button>
+  </div>
 
-  <!-- Mobile Dropdown Menu -->
+  <!-- Mobile drawer: sibling of blurred toolbar so position:fixed covers the viewport -->
   <div
-    class="fixed inset-0 z-40 sm:hidden"
+    class="pointer-events-none fixed inset-0 z-[100] isolate sm:hidden"
     id="mobile-overlay"
     style="display: none;"
+    aria-hidden="true"
   >
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm"></div>
     <div
-      class="bg-theme border-theme fixed top-0 right-0 h-full w-[88vw] max-w-[22rem] transform border-l shadow-2xl transition-transform duration-300 ease-in-out"
+      class="pointer-events-auto fixed inset-0 bg-black/60 backdrop-blur-sm"
+      data-drawer-backdrop
+      aria-hidden="true"
+    >
+    </div>
+    <div
+      class="bg-theme border-theme pointer-events-auto fixed top-0 right-0 z-10 flex h-full w-[min(100vw,22rem)] max-w-[100vw] min-w-0 flex-col border-l shadow-2xl transition-transform duration-300 ease-in-out"
       id="mobile-menu"
     >
       <!-- Mobile Menu Header -->
