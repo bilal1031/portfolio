@@ -30,7 +30,8 @@ export const SITE_CONFIG: SiteConfig = {
 export const SECTION_SUBTITLES = {
   experience: "My professional journey and career highlights",
   projects: "Innovative solutions I've built for clients worldwide",
-  publications: "Peer-reviewed and conference research only",
+  publications:
+    "Published work in peer-reviewed journals and conference proceedings",
   achievements: "Key milestones and accomplishments in my journey",
   about: "Get to know me beyond the code",
 };
