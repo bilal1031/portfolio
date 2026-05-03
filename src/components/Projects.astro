@@ -8,6 +8,20 @@ interface Props {
 }
 
 const { projects } = Astro.props;
+
+const linkCta = (
+  name: string,
+  linkPreview: string | undefined,
+  linkLabel: string | undefined,
+) => {
+  const isGitHub = Boolean(linkPreview?.includes("github.com"));
+  return {
+    label: linkLabel ?? (isGitHub ? "View on GitHub" : "View Case Study"),
+    aria: isGitHub
+      ? `Open ${name} on GitHub (new tab)`
+      : `Open ${name} case study on INFILP (new tab)`,
+  };
+};
 ---
 
 <Section
@@ -16,8 +30,13 @@ const { projects } = Astro.props;
   subtitle={SECTION_SUBTITLES.projects}
 >
   {
-    projects.map(({ name, summary, image, linkPreview }, index) => {
+    projects.map(({ name, summary, image, linkPreview, linkLabel }, index) => {
       const top = 98 + index * 40;
+      const { label: ctaLabel, aria: ctaAria } = linkCta(
+        name,
+        linkPreview,
+        linkLabel,
+      );
       return (
         <div
           style={`top: ${top}px;`}
@@ -37,9 +56,9 @@ const { projects } = Astro.props;
                   target="_blank"
                   rel="noopener noreferrer"
                   class="text-primary hover:text-primary-hover mt-4 inline-flex items-center gap-2 text-sm font-semibold"
-                  aria-label={`Open ${name} case study on INFILP (new tab)`}
+                  aria-label={ctaAria}
                 >
-                  View Case Study <span aria-hidden="true">↗</span>
+                  {ctaLabel} <span aria-hidden="true">↗</span>
                 </a>
               ) : null}
             </div>

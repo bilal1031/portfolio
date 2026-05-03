@@ -54,6 +54,8 @@ export interface ProjectProps {
   image: string;
   linkPreview?: string;
   linkSource?: string;
+  /** When set, overrides auto-detected link label (e.g. GitHub vs case study). */
+  linkLabel?: string;
 }
 
 export interface AchievementProps {
