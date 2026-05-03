@@ -1,12 +1,12 @@
 ---
 import Section from "./Section.astro";
 import { Image } from "astro:assets";
-import type { AboutProps, HeroProps } from "@types";
+import type { AboutProps } from "@types";
 import { SECTION_SUBTITLES, SITE_CONTENT } from "@config";
 
-type Props = AboutProps & Pick<HeroProps, "name">;
+type Props = AboutProps;
 
-const { description, image, name } = Astro.props;
+const { description, image } = Astro.props;
 const email = SITE_CONTENT.hero.email;
 ---
 
@@ -33,7 +33,7 @@ const email = SITE_CONTENT.hero.email;
         src={image}
         width="260"
         height="260"
-        alt={`Bilal Naeem PFP`}
+        alt="Bilal Naeem profile photo"
       />
     </div>
   </div>

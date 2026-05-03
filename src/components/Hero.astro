@@ -11,7 +11,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
 ---
 
 <section
-  class="relative py-24 md:py-32"
+  class="relative py-20 md:py-28"
   id="hero"
   itemscope
   itemtype="https://schema.org/Person"
@@ -23,7 +23,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
   <div class="relative">
     <!-- Name -->
     <h1
-      class="text-theme mb-4 font-serif text-7xl font-bold tracking-tightest sm:text-8xl md:mb-6 md:text-9xl"
+      class="text-theme mb-4 max-w-4xl font-serif text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl"
       itemprop="name"
     >
       {name}
@@ -31,7 +31,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
 
     <!-- Specialty with enhanced styling -->
     <p
-      class="mb-6 font-serif text-4xl leading-tight font-bold tracking-tighter text-primary sm:text-5xl md:mb-8 md:text-6xl"
+      class="text-primary mb-6 max-w-3xl font-serif text-2xl leading-tight font-semibold tracking-tight sm:text-3xl md:mb-8 md:text-4xl"
       itemprop="jobTitle"
     >
       {specialty}
@@ -39,7 +39,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
 
     <!-- Summary with better typography and spacing -->
     <p
-      class="text-theme-muted mb-12 max-w-2xl text-lg leading-relaxed md:mb-16 md:text-xl"
+      class="text-theme-muted mb-12 max-w-2xl text-base leading-relaxed md:mb-14 md:text-lg"
       itemprop="description"
     >
       {summary}
@@ -48,7 +48,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
     <!-- CTA and Social Links -->
     <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-6">
       <a
-        class="group inline-flex items-center justify-center rounded-2xl bg-primary px-12 py-5 text-base font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-200 ease-in-out hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/30"
+        class="group inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-200 ease-in-out hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/30"
         href={`mailto:${email}`}
         itemprop="email"
         aria-label="Contact Bilal Naeem via email"
@@ -70,7 +70,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
       </a>
 
       <!-- Social Media Links -->
-      <div class="flex items-center gap-6">
+      <div class="flex items-center gap-3">
         <div class="flex gap-4">
           {
             socialLinks.map((link) => {
@@ -81,13 +81,13 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group border-theme-muted/20 bg-theme-secondary/30 relative flex h-14 w-14 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20"
+                  class="group border-theme bg-theme-secondary relative flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20"
                   aria-label={`${link.text} Profile`}
                 >
                   <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {isGitHub ? (
                     <svg
-                      class="text-theme-muted relative h-6 w-6 transition-all duration-300 group-hover:scale-110 group-hover:text-primary"
+                      class="text-theme-muted relative h-5 w-5 transition-all duration-300 group-hover:scale-110 group-hover:text-primary"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"
@@ -100,7 +100,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
                     </svg>
                   ) : isLinkedIn ? (
                     <svg
-                      class="text-theme-muted relative h-6 w-6 transition-all duration-300 group-hover:scale-110 group-hover:text-primary"
+                      class="text-theme-muted relative h-5 w-5 transition-all duration-300 group-hover:scale-110 group-hover:text-primary"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                       aria-hidden="true"

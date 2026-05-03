@@ -8,16 +8,19 @@ interface Props {
 const { text, href, subtitle } = Astro.props;
 ---
 
-<section id={href} class="py-24">
-  <div class="mb-14">
+<section id={href} class="py-16 md:py-24">
+  <div class="mb-10 md:mb-12">
+    <p class="text-theme-muted mb-3 text-xs font-semibold tracking-[0.22em] uppercase">
+      {text}
+    </p>
     <h2
-      class="text-theme mb-4 font-serif text-4xl font-bold tracking-tighter md:text-5xl"
+      class="text-theme mb-3 font-serif text-3xl font-semibold tracking-tight md:text-5xl"
     >
       {text}
     </h2>
     {
       subtitle && (
-        <p class="text-theme-muted text-lg font-normal md:text-xl">
+        <p class="text-theme-muted max-w-2xl text-base leading-relaxed md:text-lg">
           {subtitle}
         </p>
       )

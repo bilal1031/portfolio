@@ -10,7 +10,7 @@ const { siteLogo, navLinks } = Astro.props;
 ---
 
 <header
-  class="bg-theme border-theme sticky top-0 z-50 mx-auto flex max-w-5xl justify-between border-b px-5 py-6"
+  class="bg-theme border-theme sticky top-0 z-50 mx-auto flex w-full max-w-5xl items-center justify-between border-b px-5 py-5 backdrop-blur md:px-8"
 >
   <a href="/" aria-label="Home link">
     <Image
@@ -24,12 +24,12 @@ const { siteLogo, navLinks } = Astro.props;
 
   <!-- Desktop Navigation -->
   <nav class="text-theme-muted hidden sm:block" id="desktop-menu">
-    <ul class="flex gap-2">
+    <ul class="flex gap-1">
       {
         navLinks.map((link) => (
           <li class="relative">
             <a
-              class="nav-item active-indicator hover:text-theme relative block p-2 text-sm font-medium transition-all duration-500"
+              class="nav-item active-indicator hover:text-theme relative block rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300"
               href={link.href}
             >
               {link.text}
@@ -288,11 +288,12 @@ const { siteLogo, navLinks } = Astro.props;
   }
 
   .nav-item.active-indicator.is-active {
-    color: rgb(var(--color-theme));
+    color: var(--color-primary);
   }
 
   /* Mobile active state */
   #mobile-menu nav a.is-active {
-    color: rgb(var(--color-primary));
+    color: var(--color-primary);
+    background-color: var(--color-primary-soft);
   }
 </style>

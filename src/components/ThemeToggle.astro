@@ -4,13 +4,13 @@
 
 <button
   type="button"
-  class="theme-toggle group border-neutral/20 text-neutral relative flex h-10 w-10 items-center justify-center rounded-lg border bg-transparent transition-all duration-200 hover:border-primary/50 hover:text-primary focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-bg focus:outline-none"
+  class="theme-toggle border-theme text-theme-muted hover:text-primary hover:border-primary relative flex h-10 w-10 items-center justify-center rounded-lg border bg-transparent transition-all duration-200 focus:outline-none"
   aria-label="Toggle theme"
   title="Toggle theme"
 >
   <!-- Sun icon (visible in dark mode) -->
   <svg
-    class="h-5 w-5 transition-all duration-200 group-hover:scale-110 dark:block"
+    class="theme-toggle-sun hidden h-5 w-5 transition-all duration-200"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -24,7 +24,7 @@
 
   <!-- Moon icon (visible in light mode) -->
   <svg
-    class="h-5 w-5 transition-all duration-200 group-hover:scale-110 dark:hidden"
+    class="theme-toggle-moon hidden h-5 w-5 transition-all duration-200"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -35,59 +35,50 @@
 </button>
 
 <script>
-  class ThemeToggle {
-    private storageKey: string;
-    private defaultTheme: string;
+  const storageKey = "theme-preference";
+  const defaultTheme = "dark";
 
-    constructor(
-      storageKey: string = "theme-preference",
-      defaultTheme: string = "dark",
-    ) {
-      this.storageKey = storageKey;
-      this.defaultTheme = defaultTheme;
-      this.init();
-    }
+  const getStoredTheme = (): string | null => {
+    if (typeof window === "undefined") return null;
+    return localStorage.getItem(storageKey);
+  };
 
-    private init() {
-      // Set initial theme
-      this.setTheme(this.getStoredTheme() || this.defaultTheme);
+  const setStoredTheme = (theme: string): void => {
+    if (typeof window === "undefined") return;
+    localStorage.setItem(storageKey, theme);
+  };
 
-      // Add click listeners to all theme toggle buttons
-      const toggleButtons = document.querySelectorAll(".theme-toggle");
-      toggleButtons.forEach((button) => {
-        button.addEventListener("click", () => this.toggleTheme());
-      });
-    }
+  const syncThemeIcons = (): void => {
+    const isDark = document.documentElement.classList.contains("dark");
+    document.querySelectorAll<HTMLElement>(".theme-toggle-sun").forEach((icon) => {
+      icon.style.display = isDark ? "block" : "none";
+    });
+    document.querySelectorAll<HTMLElement>(".theme-toggle-moon").forEach((icon) => {
+      icon.style.display = isDark ? "none" : "block";
+    });
+  };
 
-    private getStoredTheme(): string | null {
-      if (typeof window === "undefined") return null;
-      return localStorage.getItem(this.storageKey);
-    }
+  const setTheme = (theme: string): void => {
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+    document.documentElement.setAttribute("data-theme", theme);
+    setStoredTheme(theme);
+    syncThemeIcons();
+  };
 
-    private setStoredTheme(theme: string): void {
-      if (typeof window === "undefined") return;
-      localStorage.setItem(this.storageKey, theme);
-    }
+  const toggleTheme = (): void => {
+    const currentTheme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  };
 
-    private setTheme(theme: string): void {
-      if (typeof document === "undefined") return;
+  const initThemeToggle = (): void => {
+    setTheme(getStoredTheme() || defaultTheme);
+    document.querySelectorAll<HTMLButtonElement>(".theme-toggle").forEach((button) => {
+      button.addEventListener("click", toggleTheme);
+    });
+  };
 
-      document.documentElement.classList.remove("light", "dark");
-      document.documentElement.classList.add(theme);
-      this.setStoredTheme(theme);
-    }
-
-    private toggleTheme(): void {
-      const currentTheme = document.documentElement.classList.contains("dark")
-        ? "dark"
-        : "light";
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      this.setTheme(newTheme);
-    }
-  }
-
-  // Initialize theme toggle when DOM is loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    new ThemeToggle();
-  });
+  document.addEventListener("DOMContentLoaded", initThemeToggle);
 </script>

@@ -1,0 +1,69 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const sortedPosts = [...posts].sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+
+const formatDate = (value: Date) =>
+  value.toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+---
+
+<Layout
+  pageTitle="Writing — Bilal Naeem"
+  pageDescription="Essays, notes, and practical software breakdowns by Bilal Naeem."
+  ogType="website"
+>
+  <section class="mx-auto max-w-3xl py-14 md:py-20">
+    <p class="text-theme-muted mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
+      Journal
+    </p>
+    <h1 class="text-theme mb-3 font-serif text-4xl font-semibold tracking-tight md:text-5xl">
+      Writing
+    </h1>
+    <p class="text-theme-muted mb-12 text-base leading-relaxed md:text-lg">
+      Essays, project notes, and practical engineering breakdowns.
+    </p>
+
+    {sortedPosts.length === 0 ? (
+      <div class="border-theme bg-theme-secondary rounded-2xl border p-8">
+        <p class="text-theme-muted">No posts yet.</p>
+      </div>
+    ) : (
+      <div class="space-y-3">
+        {sortedPosts.map((post) => (
+          <article class="border-theme bg-theme-secondary rounded-2xl border p-5 md:p-6">
+            <div class="text-theme-muted mb-2 flex items-center gap-2 text-xs">
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              {post.data.readingTime && (
+                <>
+                  <span>•</span>
+                  <span>{post.data.readingTime}</span>
+                </>
+              )}
+            </div>
+            <a
+              href={`/posts/${post.slug}`}
+              class="text-theme hover:text-primary block font-serif text-2xl font-semibold transition-colors duration-200"
+            >
+              {post.data.title}
+            </a>
+            {post.data.description && (
+              <p class="text-theme-muted mt-2 text-sm leading-relaxed md:text-base">
+                {post.data.description}
+              </p>
+            )}
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+</Layout>

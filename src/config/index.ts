@@ -10,6 +10,7 @@ export const SITE_CONFIG: SiteConfig = {
   navLinks: [
     { text: "Experience", href: "#experience" },
     { text: "Projects", href: "#projects" },
+    { text: "Writing", href: "/posts" },
     { text: "Achievements", href: "#achievements" },
     { text: "About", href: "#about" },
   ],
@@ -18,7 +19,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "LinkedIn", href: "https://www.linkedin.com/in/bilal~naeem/" },
     { text: "Github", href: "https://github.com/bilal1031" },
   ],
-  socialImage: "/bilal-small.jpeg",
+  socialImage: "/bilal-big.jpeg",
   canonicalURL: "https://bilalnaeem.web.app/",
   theme: {
     defaultTheme: "dark",
@@ -29,6 +30,7 @@ export const SITE_CONFIG: SiteConfig = {
 export const SECTION_SUBTITLES = {
   experience: "My professional journey and career highlights",
   projects: "Innovative solutions I've built for clients worldwide",
+  posts: "Latest essays, notes, and practical breakdowns",
   achievements: "Key milestones and accomplishments in my journey",
   about: "Get to know me beyond the code",
 };
