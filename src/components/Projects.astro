@@ -21,30 +21,31 @@ const { projects } = Astro.props;
       return (
         <div
           style={`top: ${top}px;`}
-          class="group border-theme bg-theme mb-6 overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 md:sticky md:mb-10 md:rounded-3xl md:hover:-translate-y-0.5"
+          class="group border-theme bg-theme hover:shadow-primary/10 mb-6 overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl md:sticky md:mb-10 md:rounded-3xl md:hover:-translate-y-0.5"
         >
-          <div class="project-card-bg relative z-[1] grid min-h-[360px] w-full grid-rows-[auto_190px] rounded-2xl sm:grid-cols-2 sm:grid-rows-1 md:h-96 md:rounded-3xl">
+          <div class="project-card-bg relative z-[1] grid min-h-[420px] w-full grid-rows-[auto_260px] rounded-2xl sm:min-h-[360px] sm:grid-cols-2 sm:grid-rows-1 md:h-96 md:rounded-3xl">
             <div class="relative z-10 px-5 py-6 md:px-8 md:py-10">
-              <h3 class="mb-3 font-serif text-xl font-semibold text-theme transition-colors duration-300 group-hover:text-primary md:mb-4 md:text-3xl">
+              <h3 class="text-theme group-hover:text-primary mb-3 font-serif text-xl font-semibold transition-colors duration-300 md:mb-4 md:text-3xl">
                 {name}
               </h3>
               <p class="text-theme-muted text-sm leading-relaxed md:text-base">
                 {summary}
               </p>
-              <div class="text-theme mt-5 flex flex-wrap gap-4 md:mt-8 md:gap-5">
+              {linkPreview ? (
                 <a
                   href={linkPreview}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group/link inline-flex items-center gap-2 text-sm font-medium text-primary transition-colors duration-200 after:relative after:bottom-[-2px] after:opacity-60 after:transition-opacity after:duration-200 after:content-[url(/external.svg)] group-hover/link:after:opacity-100 hover:text-primary-hover"
+                  class="text-primary hover:text-primary-hover mt-4 inline-flex items-center gap-2 text-sm font-semibold"
+                  aria-label={`Open ${name} case study on INFILP (new tab)`}
                 >
-                  Case Study
+                  View Case Study <span aria-hidden="true">↗</span>
                 </a>
-              </div>
+              ) : null}
             </div>
-            <div class="relative overflow-hidden">
+            <div class="relative min-h-[260px] w-full min-w-0 overflow-hidden sm:min-h-0">
               <img
-                class="absolute right-0 -bottom-12 h-[190px] w-[86%] object-contain md:-right-16 md:-bottom-12 md:h-auto md:w-[95%]"
+                class="relative h-[260px] w-full border-0 object-cover object-top ring-0 outline-none max-sm:origin-top max-sm:scale-[1.12] sm:absolute sm:right-0 sm:-bottom-12 sm:left-auto sm:h-[190px] sm:w-[86%] sm:object-contain sm:object-center md:-right-16 md:-bottom-12 md:h-auto md:w-[95%]"
                 src={image}
                 alt={name}
                 width="736"

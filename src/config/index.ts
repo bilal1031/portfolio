@@ -77,6 +77,14 @@ export const SITE_CONTENT: SiteContent = {
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/VetEye%2Fsolution.webp?alt=media&token=466ee2f1-63f7-4e55-9b58-cbf32e540b6a",
     },
     {
+      name: "Hero Project",
+      summary:
+        "Caregiving coordination app helps families support loved ones with shared visibility and teamwork. Includes event board, time and expense tracking, quick chat, and motivational quotes.",
+      linkPreview: "https://www.infilp.com/portfolio/hero-project",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Hero%20Project%2Fsolution.webp?alt=media&token=5a45fb07-5ffb-4abb-a13f-7bfe0530d5ef",
+    },
+    {
       name: "Heurica",
       summary:
         "App connecting PhD candidates with research collaborators worldwide. Features project profiles, community engagement, in-app messaging, and AI content moderation.",
