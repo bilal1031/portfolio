@@ -40,9 +40,10 @@
 
 :root {
   color-scheme: dark;
-  --color-primary: #7cc7ff;
-  --color-primary-hover: #a8dbff;
-  --color-primary-soft: #143043;
+  /* Richer blue (less pastel / “whitish”) on dark UI */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #60a5fa;
+  --color-primary-soft: #172554;
 
   --color-secondary: #9f8bff;
   --color-secondary-hover: #b9abff;

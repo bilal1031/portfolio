@@ -12,10 +12,23 @@ export interface SiteConfig extends HeaderProps {
   };
 }
 
+export interface PublicationProps {
+  title: string;
+  description?: string;
+  /** ISO date string (YYYY-MM-DD) for sorting and display */
+  pubDate: string;
+  readingTime?: string;
+  /** Where the card navigates (IEEE, DOI, publisher PDF, etc.) */
+  url: string;
+  /** Optional label in the meta row (e.g. IEEE Xplore) */
+  venue?: string;
+}
+
 export interface SiteContent {
   hero: HeroProps;
   experience: ExperienceProps[];
   projects: ProjectProps[];
+  publications: PublicationProps[];
   achievements: AchievementProps[];
   about: AboutProps;
 }

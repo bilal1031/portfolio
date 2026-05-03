@@ -1,16 +1,16 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Bilal Naeem — Mobile App Developer & Co-Founder at INFILP",
+  title: "Bilal Naeem — Co-Founder & Lead Engineer at INFILP ",
   author: "Bilal Naeem",
   description:
     "Co-Founder & Lead Engineer at INFILP, one of the Fiverr top development agency. Expert mobile app developer crafting innovative solutions with React Native, React, TypeScript, and AI-powered technologies. Delivering exceptional user experiences for clients worldwide.",
   lang: "en",
   siteLogo: "/bilal-small.jpeg",
   navLinks: [
+    { text: "Publications", href: "#publications" },
     { text: "Experience", href: "#experience" },
     { text: "Projects", href: "#projects" },
-    { text: "Writing", href: "/posts" },
     { text: "Achievements", href: "#achievements" },
     { text: "About", href: "#about" },
   ],
@@ -30,7 +30,7 @@ export const SITE_CONFIG: SiteConfig = {
 export const SECTION_SUBTITLES = {
   experience: "My professional journey and career highlights",
   projects: "Innovative solutions I've built for clients worldwide",
-  posts: "Latest essays, notes, and practical breakdowns",
+  publications: "Peer-reviewed and conference research only",
   achievements: "Key milestones and accomplishments in my journey",
   about: "Get to know me beyond the code",
 };
@@ -40,7 +40,7 @@ export const SITE_CONTENT: SiteContent = {
     name: "Bilal Naeem",
     specialty: "Co-Founder & Lead Engineer at INFILP",
     summary:
-      "Building mobile apps that make a difference. Transforming ideas into exceptional digital experiences with React Native, TypeScript, and AI-powered solutions.",
+      "Building mobile apps that make a difference. Transforming ideas into exceptional digital experiences with React Native and AI-powered solutions.",
     email: "bilalnaeem166@gmail.com",
   },
   experience: [
@@ -69,6 +69,22 @@ export const SITE_CONTENT: SiteContent = {
   ],
   projects: [
     {
+      name: "VetEye",
+      summary:
+        "Educational app for veterinary ophthalmology students with disease library, board quizzes, video lectures, and certificates. Features advanced filters, quiz retakes, and favorites for study.",
+      linkPreview: "https://www.infilp.com/portfolio/veteye",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/VetEye%2Fsolution.webp?alt=media&token=466ee2f1-63f7-4e55-9b58-cbf32e540b6a",
+    },
+    {
+      name: "Heurica",
+      summary:
+        "App connecting PhD candidates with research collaborators worldwide. Features project profiles, community engagement, in-app messaging, and AI content moderation.",
+      linkPreview: "https://infilp.com/portfolio/heurica",
+      image:
+        "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Heurica%2Fsolution.webp?alt=media&token=d3aff4a6-b6ab-4415-9e14-147598f9b39f",
+    },
+    {
       name: "Wobo",
       summary:
         "Fitness app connecting athletes with private gyms, boxing rings, and courts. Features secure Stripe payments, motivational audio (DRIPS), venue management, and real-time communication.",
@@ -85,28 +101,24 @@ export const SITE_CONTENT: SiteContent = {
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/ServiceHub%2Fsolution.webp?alt=media&token=60116336-7261-4c58-9182-cccbd561353a",
     },
     {
-      name: "Heurica",
-      summary:
-        "App connecting PhD candidates with research collaborators worldwide. Features project profiles, community engagement, in-app messaging, and AI content moderation.",
-      linkPreview: "https://infilp.com/portfolio/heurica",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Heurica%2Fsolution.webp?alt=media&token=d3aff4a6-b6ab-4415-9e14-147598f9b39f",
-    },
-    {
-      name: "VetEye",
-      summary:
-        "Educational app for veterinary ophthalmology students featuring eye disease library, interactive board exam quizzes, expert video lectures with certificates.",
-      linkPreview: "https://infilp.com/portfolio/veteye",
-      image:
-        "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/VetEye%2Fsolution.webp?alt=media&token=466ee2f1-63f7-4e55-9b58-cbf32e540b6a",
-    },
-    {
       name: "Easy As Pie Budget",
       summary:
         "Expense management app for individuals, couples, and families. Features budget tracking, customizable categories, recurring expenses, and savings goals.",
       linkPreview: "https://infilp.com/portfolio/easy-as-pie-budget",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Easy%20As%20Pie%20Budget%2Fsolution.webp?alt=media&token=065567ca-32d3-40d1-8405-d9608eea55dd",
+    },
+  ],
+  publications: [
+    {
+      title:
+        "SmartGuard: Privacy-Preserving Edge-Based Video Surveillance Framework for Suspicious Activity Detection",
+      description:
+        "IEEE conference publication on a privacy-preserving, edge-based video surveillance framework for suspicious activity detection.",
+      pubDate: "2026-02-10",
+      readingTime: "Conference paper",
+      url: "https://ieeexplore.ieee.org/document/11433163/",
+      venue: "IEEE Xplore",
     },
   ],
   achievements: [

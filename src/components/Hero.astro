@@ -48,7 +48,7 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
     <!-- CTA and Social Links -->
     <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-6">
       <a
-        class="group inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition-all duration-200 ease-in-out hover:bg-primary-hover hover:shadow-xl hover:shadow-primary/30"
+        class="group inline-flex items-center justify-center rounded-full bg-primary px-8 py-3 text-sm font-semibold text-white shadow-sm shadow-black/10 transition-colors duration-200 ease-in-out hover:bg-primary-hover dark:shadow-black/25"
         href={`mailto:${email}`}
         itemprop="email"
         aria-label="Contact Bilal Naeem via email"
@@ -154,29 +154,4 @@ const socialLinks = SITE_CONFIG.socialLinks.filter(
     }
   }
 
-  /* Enhanced hover effects for CTA button */
-  #hero a[href^="mailto:"] {
-    position: relative;
-    overflow: hidden;
-  }
-
-  #hero a[href^="mailto:"]::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    transition: left 0.5s;
-  }
-
-  #hero a[href^="mailto:"]:hover::before {
-    left: 100%;
-  }
 </style>

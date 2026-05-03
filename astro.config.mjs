@@ -6,6 +6,9 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   site: "https://bilalnaeem.web.app",
+  redirects: {
+    "/posts": "/#publications",
+  },
   vite: {
     plugins: [tailwindcss()],
   },

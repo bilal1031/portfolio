@@ -1,0 +1,89 @@
+---
+import Section from "./Section.astro";
+import type { PublicationProps } from "@types";
+import { SECTION_SUBTITLES } from "@config";
+
+interface Props {
+  publications: PublicationProps[];
+}
+
+const { publications } = Astro.props;
+
+const listed = [...publications].sort(
+  (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime(),
+);
+
+const formatDate = (iso: string) =>
+  new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+
+const opensNewTab = (url: string) => /^https?:\/\//i.test(url.trim());
+---
+
+<Section
+  text="Publications"
+  href="publications"
+  subtitle={SECTION_SUBTITLES.publications}
+>
+  {
+    listed.length === 0 ? (
+      <div class="border-theme bg-theme-secondary rounded-2xl border p-8 text-center">
+        <p class="text-theme-muted text-base">
+          Research publications will appear here once added.
+        </p>
+      </div>
+    ) : (
+      <div class="space-y-3 md:space-y-4">
+        {
+          listed.map((pub) => {
+            const external = opensNewTab(pub.url);
+            return (
+              <a
+                href={pub.url.trim()}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener noreferrer" : undefined}
+                title={
+                  external && pub.venue
+                    ? `Open on ${pub.venue} (new tab)`
+                    : external
+                      ? "Open publication (new tab)"
+                      : undefined
+                }
+                class="border-theme bg-theme-secondary group block cursor-pointer rounded-2xl border p-4 no-underline transition-colors duration-200 hover:border-primary/40 md:p-5"
+              >
+                <div class="text-theme-muted mb-2 flex flex-wrap items-center gap-2 text-xs">
+                  <time datetime={new Date(`${pub.pubDate}T12:00:00`).toISOString()}>
+                    {formatDate(pub.pubDate)}
+                  </time>
+                  {pub.readingTime && (
+                    <>
+                      <span>•</span>
+                      <span>{pub.readingTime}</span>
+                    </>
+                  )}
+                  {pub.venue && (
+                    <>
+                      <span>•</span>
+                      <span class="font-medium">{pub.venue}</span>
+                    </>
+                  )}
+                </div>
+                <span class="text-theme group-hover:text-primary block font-serif text-xl font-semibold leading-snug transition-colors duration-200 md:text-2xl">
+                  {pub.title}
+                </span>
+                {pub.description && (
+                  <p class="text-theme-muted mt-2 text-sm leading-relaxed md:text-base">
+                    {pub.description}
+                  </p>
+                )}
+              </a>
+            );
+          })
+        }
+      </div>
+    )
+  }
+</Section>

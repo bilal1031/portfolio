@@ -21,17 +21,17 @@ const { projects } = Astro.props;
       return (
         <div
           style={`top: ${top}px;`}
-          class="group border-theme bg-theme sticky mb-10 overflow-hidden rounded-3xl border transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/10"
+          class="group border-theme bg-theme mb-6 overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 md:sticky md:mb-10 md:rounded-3xl md:hover:-translate-y-0.5"
         >
-          <div class="project-card-bg relative z-[1] grid h-[450px] w-full grid-rows-2 rounded-3xl sm:grid-cols-2 sm:grid-rows-1 md:h-96">
-            <div class="relative z-10 px-6 py-8 md:px-8 md:py-10">
-              <h3 class="mb-4 font-serif text-2xl font-semibold text-theme transition-colors duration-300 group-hover:text-primary md:text-3xl">
+          <div class="project-card-bg relative z-[1] grid min-h-[360px] w-full grid-rows-[auto_190px] rounded-2xl sm:grid-cols-2 sm:grid-rows-1 md:h-96 md:rounded-3xl">
+            <div class="relative z-10 px-5 py-6 md:px-8 md:py-10">
+              <h3 class="mb-3 font-serif text-xl font-semibold text-theme transition-colors duration-300 group-hover:text-primary md:mb-4 md:text-3xl">
                 {name}
               </h3>
               <p class="text-theme-muted text-sm leading-relaxed md:text-base">
                 {summary}
               </p>
-              <div class="text-theme mt-8 flex flex-wrap gap-5">
+              <div class="text-theme mt-5 flex flex-wrap gap-4 md:mt-8 md:gap-5">
                 <a
                   href={linkPreview}
                   target="_blank"
@@ -44,7 +44,7 @@ const { projects } = Astro.props;
             </div>
             <div class="relative overflow-hidden">
               <img
-                class="absolute -right-14 -bottom-14 h-[255px] w-[80%] object-contain md:-right-16 md:-bottom-12 md:h-auto md:w-[95%]"
+                class="absolute right-0 -bottom-12 h-[190px] w-[86%] object-contain md:-right-16 md:-bottom-12 md:h-auto md:w-[95%]"
                 src={image}
                 alt={name}
                 width="736"
