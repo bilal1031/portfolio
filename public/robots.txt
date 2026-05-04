@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bilalnaeem.web.app/sitemap-index.xml
+Sitemap: https://bilalnaeem.infilp.comsitemap-index.xml

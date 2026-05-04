@@ -194,47 +194,47 @@ const { siteLogo, navLinks } = Astro.props;
   });
 
   // Update navigation based on scroll position
-  function updateActiveNav() {
-    const sections = document.querySelectorAll("section");
-    const scrollPos = window.scrollY + 200;
-    let activeSection = "";
-    let minDistance = Infinity;
+  const updateActiveNav = () => {
+    const sections = Array.from(document.querySelectorAll("section")) as HTMLElement[];
+    if (sections.length === 0) return;
 
+    const scrollPos = window.scrollY + 140;
+    const pageBottom = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Mark the last section whose top is above the current scroll position.
+    let activeSection = sections[0].id;
     sections.forEach((section) => {
-      const sectionTop = (section as HTMLElement).offsetTop;
-      const sectionHeight = section.offsetHeight;
-      const sectionBottom = sectionTop + sectionHeight;
+      if (scrollPos >= section.offsetTop) {
+        activeSection = section.id;
+      }
+    });
 
-      // Check if section is in viewport
-      if (scrollPos >= sectionTop && scrollPos <= sectionBottom) {
-        const distance = Math.abs(scrollPos - (sectionTop + sectionHeight / 2));
-        if (distance < minDistance) {
-          minDistance = distance;
-          activeSection = section.id;
+    // If the user reaches the bottom, keep the final section active.
+    if (documentHeight - pageBottom <= 4) {
+      activeSection = sections[sections.length - 1].id;
+    }
+
+    const getHash = (href: string | null) => {
+      if (!href) return "";
+      const [, hash = ""] = href.split("#");
+      return hash;
+    };
+
+    const applyActiveState = (items: NodeListOf<Element>) => {
+      items.forEach((item) => {
+        const href = item.getAttribute("href");
+        if (getHash(href) === activeSection) {
+          item.classList.add("is-active");
+        } else {
+          item.classList.remove("is-active");
         }
-      }
-    });
+      });
+    };
 
-    // Update desktop nav
-    navItems.forEach((item) => {
-      const href = item.getAttribute("href");
-      if (href === `#${activeSection}`) {
-        item.classList.add("is-active");
-      } else {
-        item.classList.remove("is-active");
-      }
-    });
-
-    // Update mobile nav
-    mobileNavItems.forEach((item) => {
-      const href = item.getAttribute("href");
-      if (href === `#${activeSection}`) {
-        item.classList.add("is-active");
-      } else {
-        item.classList.remove("is-active");
-      }
-    });
-  }
+    applyActiveState(navItems);
+    applyActiveState(mobileNavItems);
+  };
 
   window.addEventListener("scroll", updateActiveNav);
   window.addEventListener("load", updateActiveNav);

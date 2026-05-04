@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bilalnaeem.web.app",
+  site: "https://bilalnaeem.infilp.combilalnaeem.web.app",
   redirects: {
     "/posts": "/#publications",
   },
@@ -17,7 +17,7 @@ export default defineConfig({
       changefreq: "weekly",
       priority: 0.7,
       lastmod: new Date(),
-      customPages: ["https://bilalnaeem.web.app/"],
+      customPages: ["https://bilalnaeem.infilp.com"],
       filter: (page) => !page.includes("404"),
       i18n: {
         defaultLocale: "en",

@@ -20,7 +20,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Github", href: "https://github.com/bilal1031" },
   ],
   socialImage: "/bilal-big.jpeg",
-  canonicalURL: "https://bilalnaeem.web.app/",
+  canonicalURL: "https://bilalnaeem.infilp.com",
   theme: {
     defaultTheme: "dark",
     storageKey: "theme-preference",
