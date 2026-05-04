@@ -5,7 +5,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://bilalnaeem.infilp.combilalnaeem.web.app",
+  site: "https://bilalnaeem.infilp.com",
   redirects: {
     "/posts": "/#publications",
   },
