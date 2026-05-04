@@ -158,6 +158,15 @@ export const SITE_CONTENT: SiteContent = {
   ],
   achievements: [
     {
+      title: "Amazon Nova AI Hackathon — Winner Bonus Blog Post Prize",
+      description:
+        "Built Motivio, a React Native AI coach that delivers personalized daily motivation with micro-steps, adaptive coaching modes, and server-side Bedrock generation — submitted on Devpost.",
+      icon: "🚀",
+      year: "Mar 2026",
+      type: "professional",
+      link: "https://devpost.com/software/motivio",
+    },
+    {
       title: "SOFTEC'22 App Development Winner",
       description:
         "1st place among 15 teams at Pakistan's largest university-led IT event (FAST NUCES Lahore)",
