@@ -11,6 +11,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Publications", href: "#publications" },
     { text: "Experience", href: "#experience" },
     { text: "Projects", href: "#projects" },
+    { text: "Open Source", href: "#open-source" },
     { text: "Achievements", href: "#achievements" },
     { text: "About", href: "#about" },
   ],
@@ -31,6 +32,7 @@ export const SECTION_SUBTITLES = {
   experience: "My professional journey and career highlights",
   projects:
     "Innovative solutions I've built for clients worldwide",
+  openSource: "My npm packages and upstream contributions",
   publications:
     "Published work in peer-reviewed journals and conference proceedings",
   achievements: "Key milestones and accomplishments in my journey",
@@ -117,6 +119,29 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://www.infilp.com/portfolio/easy-as-pie-budget",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Easy%20As%20Pie%20Budget%2Fsolution.webp?alt=media&token=065567ca-32d3-40d1-8405-d9608eea55dd",
+    },
+  ],
+  openSourceProjects: [
+    {
+      name: "react-native-google-places-autocomplete",
+      summary:
+        "Popular Places autocomplete for React Native—uses Google’s web APIs so you skip the heavy native Maps SDKs.",
+      contribution:
+        "Collaborator on the upstream repo—optimization, modernization, and keeping the codebase maintainable for production apps.",
+      repository:
+        "https://github.com/FaridSafi/react-native-google-places-autocomplete",
+      tags: ["React Native", "Google Places", "Open source"],
+      npmPackage: "react-native-google-places-autocomplete",
+    },
+    {
+      name: "expo-insta-story",
+      summary:
+        "Instagram-style stories for Expo and React Native, with image and video support via expo-video.",
+      contribution:
+        "I publish and maintain it on npm: TypeScript API, peer ranges for Expo/RN, docs, example app, and fixes from real-world use.",
+      repository: "https://github.com/bilal1031/expo-insta-story",
+      tags: ["Expo", "React Native", "TypeScript"],
+      npmPackage: "expo-insta-story",
     },
   ],
   publications: [

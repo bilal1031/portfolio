@@ -24,10 +24,24 @@ export interface PublicationProps {
   venue?: string;
 }
 
+export interface OpenSourceProjectProps {
+  name: string;
+  /** What the library or repo is for (one short paragraph). */
+  summary: string;
+  /** Your role: features shipped, refactors, maintenance, etc. */
+  contribution: string;
+  repository: string;
+  homepage?: string;
+  tags?: string[];
+  /** npm package name — weekly downloads and latest version are fetched at build time; links to npmjs.com. */
+  npmPackage?: string;
+}
+
 export interface SiteContent {
   hero: HeroProps;
   experience: ExperienceProps[];
   projects: ProjectProps[];
+  openSourceProjects: OpenSourceProjectProps[];
   publications: PublicationProps[];
   achievements: AchievementProps[];
   about: AboutProps;

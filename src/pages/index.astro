@@ -4,6 +4,7 @@ import Hero from "@components/Hero.astro";
 import Layout from "@layouts/Layout.astro";
 import Experience from "@components/Experience.astro";
 import Projects from "@components/Projects.astro";
+import OpenSource from "@components/OpenSource.astro";
 import Publications from "@components/Publications.astro";
 import About from "@components/About.astro";
 import Achievements from "@components/Achievements.astro";
@@ -17,6 +18,7 @@ export const lastModified = new Date();
   <Publications publications={SITE_CONTENT.publications} />
   <Experience experience={SITE_CONTENT.experience} />
   <Projects projects={SITE_CONTENT.projects} />
+  <OpenSource openSourceProjects={SITE_CONTENT.openSourceProjects} />
   <Achievements achievements={SITE_CONTENT.achievements} />
   <About {...SITE_CONTENT.about} />
 </Layout>
