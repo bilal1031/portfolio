@@ -1,10 +1,10 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Bilal Naeem — Co-Founder & Lead Engineer at INFILP ",
+  title: "Bilal Naeem",
   author: "Bilal Naeem",
   description:
-    "Co-Founder & Lead Engineer at INFILP, one of the Fiverr top development agency. Expert mobile app developer crafting innovative solutions with React Native, React, TypeScript, and AI-powered technologies. Delivering exceptional user experiences for clients worldwide.",
+    "Co-Founder & Lead Engineer at INFILP, one of the Fiverr top development agency. Expert mobile app developer crafting innovative solutions with React Native, React, and TypeScript. Delivering exceptional user experiences for clients worldwide.",
   lang: "en",
   siteLogo: "/bilal-small.jpeg",
   navLinks: [
@@ -23,7 +23,7 @@ export const SITE_CONFIG: SiteConfig = {
   socialImage: "/bilal-big.jpeg",
   canonicalURL: "https://bilalnaeem.infilp.com",
   theme: {
-    defaultTheme: "dark",
+    defaultTheme: "light",
     storageKey: "theme-preference",
   },
 };
@@ -41,10 +41,10 @@ export const SECTION_SUBTITLES = {
 
 export const SITE_CONTENT: SiteContent = {
   hero: {
-    name: "Bilal Naeem",
-    specialty: "Co-Founder & Lead Engineer at INFILP",
+    name: "Hi, I'm Bilal Naeem",
+    specialty: "A creative problem solver building impactful digital experiences.",
     summary:
-      "Building mobile apps that make a difference. Transforming ideas into exceptional digital experiences with React Native and AI-powered solutions.",
+      "Focused on creative problem-solving through AI, mobile apps, and modern web technologies.",
     email: "bilalnaeem166@gmail.com",
   },
   experience: [
@@ -54,9 +54,9 @@ export const SITE_CONTENT: SiteContent = {
       startDate: "Mar 2023",
       endDate: "Present",
       summary: [
-        "Co-founded INFILP, a premier software development agency ranked as a top agency on Fiverr, transforming complex business requirements into intuitive mobile and web applications for clients worldwide.",
-        "Led cross-functional development teams in creating scalable React Native and React applications, implementing architectures that support rapid user growth while achieving 100% client satisfaction.",
-        "Specialized in AI-powered mobile solutions, Stripe payment integrations, and OAuth authentication systems, delivering solutions that consistently exceed client expectations and drive business results.",
+        "Co-founded INFILP, a premier software development agency ranked among Fiverr's top teams—delivered for 109+ clients across 32+ countries, translating complex requirements into mobile and web products with React Native, React, and TypeScript.",
+        "Led engineering across startup MVP launches and ongoing SME work—cross-functional delivery, scalable architecture, and releases that balance speed with maintainability and strong client outcomes.",
+        "Shipped advanced mobile product features, Stripe payments, and OAuth-based authentication in production, focusing on performance, security, and integrations that support revenue and user growth.",
       ],
     },
     {
@@ -66,7 +66,7 @@ export const SITE_CONTENT: SiteContent = {
       endDate: "Mar 2023",
       summary: [
         "Solved complex technical challenges across diverse industries, delivering high-quality mobile applications using React Native, React, and TypeScript for fintech, healthcare, and e-commerce clients.",
-        "Built applications that handle real-time data processing and secure transactions, implementing complex features including real-time payment processing, secure authentication systems, and AI-powered user interfaces.",
+        "Built applications that handle real-time data processing and secure transactions, implementing complex features including real-time payment processing, secure authentication systems, and polished, data-rich user interfaces.",
         "Maintained perfect 100% on-time delivery record while ensuring optimal performance, code quality, and comprehensive testing protocols that consistently exceed client expectations.",
       ],
     },
@@ -91,7 +91,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Heurica",
       summary:
-        "App connecting PhD candidates with research collaborators worldwide. Features project profiles, community engagement, in-app messaging, and AI content moderation.",
+        "App connecting PhD candidates with research collaborators worldwide. Features project profiles, community engagement, in-app messaging, and content moderation.",
       linkPreview: "https://www.infilp.com/portfolio/heurica",
       image:
         "https://firebasestorage.googleapis.com/v0/b/infilp.appspot.com/o/Heurica%2Fsolution.webp?alt=media&token=d3aff4a6-b6ab-4415-9e14-147598f9b39f",
@@ -124,21 +124,17 @@ export const SITE_CONTENT: SiteContent = {
   openSourceProjects: [
     {
       name: "react-native-google-places-autocomplete",
-      summary:
-        "Popular Places autocomplete for React Native—uses Google’s web APIs so you skip the heavy native Maps SDKs.",
       contribution:
-        "Collaborator on the upstream repo—optimization, modernization, and keeping the codebase maintainable for production apps.",
+        "I collaborate on the core project so apps can offer reliable address and place search. I focus on steady improvements, cleanup, and keeping the library dependable for real-world apps.",
       repository:
         "https://github.com/FaridSafi/react-native-google-places-autocomplete",
-      tags: ["React Native", "Google Places", "Open source"],
+      tags: ["React Native", "Google Places"],
       npmPackage: "react-native-google-places-autocomplete",
     },
     {
       name: "expo-insta-story",
-      summary:
-        "Instagram-style stories for Expo and React Native, with image and video support via expo-video.",
       contribution:
-        "I publish and maintain it on npm: TypeScript API, peer ranges for Expo/RN, docs, example app, and fixes from real-world use.",
+        "I publish and maintain this library so apps can show story-style posts people swipe through, with photos and videos. I ship updates, write guides, include an example app, and fix problems reported by teams using it.",
       repository: "https://github.com/bilal1031/expo-insta-story",
       tags: ["Expo", "React Native", "TypeScript"],
       npmPackage: "expo-insta-story",
@@ -154,13 +150,14 @@ export const SITE_CONTENT: SiteContent = {
       readingTime: "Conference paper",
       url: "https://ieeexplore.ieee.org/document/11433163/",
       venue: "IEEE Xplore",
+      image: "/unnamed.png",
     },
   ],
   achievements: [
     {
-      title: "Amazon Nova AI Hackathon — Winner Bonus Blog Post Prize",
+      title: "Amazon Nova Hackathon — Winner Bonus Blog Post Prize",
       description:
-        "Built Motivio, a React Native AI coach that delivers personalized daily motivation with micro-steps, adaptive coaching modes, and server-side Bedrock generation — submitted on Devpost.",
+        "Built Motivio, a React Native coaching app for personalized daily motivation with micro-steps and adaptive modes—submitted on Devpost.",
       icon: "🚀",
       year: "Mar 2026",
       type: "professional",

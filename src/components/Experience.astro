@@ -22,7 +22,7 @@ const { experience } = Astro.props;
           {company}
         </h3>
         <div class="flex flex-col items-start pb-5">
-          <h4 class="mb-0.5 font-serif text-2xl font-medium text-primary">
+          <h4 class="text-primary mb-0.5 font-serif text-2xl font-medium">
             {position}
           </h4>
           <span class="text-theme-muted pb-[2px] text-sm">
@@ -40,20 +40,6 @@ const { experience } = Astro.props;
         ) : (
           <p class="text-theme-muted text-base">{summary}</p>
         )}
-        <div class="mt-4 flex flex-wrap gap-2">
-          <a
-            href="#projects"
-            class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition-colors duration-200 hover:bg-primary/20"
-          >
-            See My Work
-          </a>
-          <a
-            href="#about"
-            class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition-colors duration-200 hover:bg-primary/20"
-          >
-            About Me
-          </a>
-        </div>
       </div>
     ))
   }

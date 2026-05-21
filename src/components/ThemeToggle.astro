@@ -1,7 +1,3 @@
----
-// Theme toggle component
----
-
 <button
   type="button"
   class="theme-toggle border-theme text-theme-muted hover:text-primary hover:border-primary relative flex h-10 w-10 items-center justify-center rounded-lg border bg-transparent transition-all duration-200 focus:outline-none"
@@ -33,52 +29,3 @@
     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
   </svg>
 </button>
-
-<script>
-  const storageKey = "theme-preference";
-  const defaultTheme = "dark";
-
-  const getStoredTheme = (): string | null => {
-    if (typeof window === "undefined") return null;
-    return localStorage.getItem(storageKey);
-  };
-
-  const setStoredTheme = (theme: string): void => {
-    if (typeof window === "undefined") return;
-    localStorage.setItem(storageKey, theme);
-  };
-
-  const syncThemeIcons = (): void => {
-    const isDark = document.documentElement.classList.contains("dark");
-    document.querySelectorAll<HTMLElement>(".theme-toggle-sun").forEach((icon) => {
-      icon.style.display = isDark ? "block" : "none";
-    });
-    document.querySelectorAll<HTMLElement>(".theme-toggle-moon").forEach((icon) => {
-      icon.style.display = isDark ? "none" : "block";
-    });
-  };
-
-  const setTheme = (theme: string): void => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    document.documentElement.setAttribute("data-theme", theme);
-    setStoredTheme(theme);
-    syncThemeIcons();
-  };
-
-  const toggleTheme = (): void => {
-    const currentTheme = document.documentElement.classList.contains("dark")
-      ? "dark"
-      : "light";
-    setTheme(currentTheme === "dark" ? "light" : "dark");
-  };
-
-  const initThemeToggle = (): void => {
-    setTheme(getStoredTheme() || defaultTheme);
-    document.querySelectorAll<HTMLButtonElement>(".theme-toggle").forEach((button) => {
-      button.addEventListener("click", toggleTheme);
-    });
-  };
-
-  document.addEventListener("DOMContentLoaded", initThemeToggle);
-</script>

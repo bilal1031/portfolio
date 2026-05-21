@@ -36,54 +36,99 @@ const opensNewTab = (url: string) => /^https?:\/\//i.test(url.trim());
         </p>
       </div>
     ) : (
-      <div class="space-y-3 md:space-y-4">
-        {
-          listed.map((pub) => {
-            const external = opensNewTab(pub.url);
-            return (
-              <a
-                href={pub.url.trim()}
-                target={external ? "_blank" : undefined}
-                rel={external ? "noopener noreferrer" : undefined}
-                title={
-                  external && pub.venue
-                    ? `Open on ${pub.venue} (new tab)`
-                    : external
-                      ? "Open publication (new tab)"
-                      : undefined
-                }
-                class="border-theme bg-theme-secondary group block cursor-pointer rounded-2xl border p-4 no-underline transition-colors duration-200 hover:border-primary/40 md:p-5"
-              >
-                <div class="text-theme-muted mb-2 flex flex-wrap items-center gap-2 text-xs">
-                  <time datetime={new Date(`${pub.pubDate}T12:00:00`).toISOString()}>
+      listed.map((pub, index) => {
+        const top = 72 + index * 24;
+        const external = opensNewTab(pub.url);
+        const href = pub.url.trim();
+        const ctaLabel = pub.venue
+          ? `View on ${pub.venue}`
+          : external
+            ? "View publication"
+            : "Open publication";
+        const ctaAria = pub.venue
+          ? `Open publication on ${pub.venue}${external ? " (new tab)" : ""}`
+          : external
+            ? "Open publication (new tab)"
+            : "Open publication";
+
+        return (
+          <div
+            style={`top: ${top}px;`}
+            class="group border-theme bg-theme hover:shadow-primary/10 mb-4 overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl md:sticky md:mb-6 md:rounded-2xl md:hover:-translate-y-0.5"
+          >
+            <div class="project-card-bg z-[1]rounded-2xl relative sm:min-h-[13rem] sm:grid-cols-2 sm:grid-rows-1 md:min-h-[14rem] md:rounded-2xl">
+              <div class="relative z-10 px-4 py-4 md:px-6 md:py-5">
+                <div class="text-theme-muted mb-2 flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[11px] md:text-xs">
+                  <time
+                    datetime={new Date(`${pub.pubDate}T12:00:00`).toISOString()}
+                  >
                     {formatDate(pub.pubDate)}
                   </time>
-                  {pub.readingTime && (
+                  {pub.readingTime ? (
                     <>
-                      <span>•</span>
+                      <span aria-hidden="true">·</span>
                       <span>{pub.readingTime}</span>
                     </>
-                  )}
-                  {pub.venue && (
+                  ) : null}
+                  {pub.venue ? (
                     <>
-                      <span>•</span>
+                      <span aria-hidden="true">·</span>
                       <span class="font-medium">{pub.venue}</span>
                     </>
-                  )}
+                  ) : null}
                 </div>
-                <span class="text-theme group-hover:text-primary block font-serif text-xl font-semibold leading-snug transition-colors duration-200 md:text-2xl">
+                <h3 class="text-theme group-hover:text-primary mb-2 font-serif text-lg leading-snug font-semibold transition-colors duration-300 md:text-xl">
                   {pub.title}
-                </span>
-                {pub.description && (
-                  <p class="text-theme-muted mt-2 text-sm leading-relaxed md:text-base">
+                </h3>
+                {pub.description ? (
+                  <p class="text-theme-muted line-clamp-3 text-xs leading-relaxed md:text-sm">
                     {pub.description}
                   </p>
+                ) : null}
+                <a
+                  href={href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
+                  class="text-primary hover:text-primary-hover mt-2 inline-flex items-center gap-1.5 text-xs font-semibold md:mt-3 md:text-sm"
+                  aria-label={ctaAria}
+                >
+                  {ctaLabel} <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+              {/* <div class="relative min-h-[160px] w-full min-w-0 overflow-hidden sm:min-h-0">
+                {pub.image ? (
+                  <img
+                    class="object-fit relative h-full w-full rounded-sm border-0 object-top ring-0"
+                    src={pub.image}
+                    alt={`Cover image for publication: ${pub.title}`}
+                    width="736"
+                    height="483"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div
+                    class="bg-theme-secondary/80 relative flex h-[160px] w-full flex-col items-center justify-center gap-2 px-4 text-center sm:absolute sm:inset-0 sm:h-full sm:min-h-0 md:-right-6 md:pr-6"
+                    aria-hidden="true"
+                  >
+                    <div class="border-primary/40 flex h-24 w-20 items-center justify-center rounded-md border-2 border-dashed md:h-28 md:w-24">
+                      <div class="bg-primary/15 h-10 w-12 rounded-sm md:h-12 md:w-14" />
+                    </div>
+                    {pub.venue ? (
+                      <span class="text-theme-muted max-w-[12rem] font-serif text-[11px] font-medium tracking-wide uppercase md:text-xs">
+                        {pub.venue}
+                      </span>
+                    ) : (
+                      <span class="text-theme-muted font-serif text-[11px] font-medium tracking-wide uppercase md:text-xs">
+                        Publication
+                      </span>
+                    )}
+                  </div>
                 )}
-              </a>
-            );
-          })
-        }
-      </div>
+              </div> */}
+            </div>
+          </div>
+        );
+      })
     )
   }
 </Section>

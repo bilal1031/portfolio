@@ -38,13 +38,17 @@ const {
 const metaTitle = pageTitle ?? title;
 const metaDescription = pageDescription ?? description;
 const ogImgUrl = new URL(socialImage, canonicalURL).href;
+const themeDefault = theme?.defaultTheme ?? "light";
+const themeStorageKey = theme?.storageKey ?? "theme-preference";
+
+const themeToggleScript = `(function(){if(window.__themeToggleInit)return;window.__themeToggleInit=true;var storageKey=${JSON.stringify(themeStorageKey)};function setStoredTheme(theme){try{localStorage.setItem(storageKey,theme)}catch(e){}}function syncThemeIcons(){var isDark=document.documentElement.classList.contains("dark");document.querySelectorAll(".theme-toggle-sun").forEach(function(icon){icon.classList.toggle("hidden",!isDark)});document.querySelectorAll(".theme-toggle-moon").forEach(function(icon){icon.classList.toggle("hidden",isDark)})}function setTheme(theme){document.documentElement.classList.remove("light","dark");document.documentElement.classList.add(theme);document.documentElement.setAttribute("data-theme",theme);setStoredTheme(theme);syncThemeIcons()}function toggleTheme(){var cur=document.documentElement.classList.contains("dark")?"dark":"light";setTheme(cur==="dark"?"light":"dark")}syncThemeIcons();document.querySelectorAll(".theme-toggle").forEach(function(btn){btn.addEventListener("click",toggleTheme)})})()`;
 ---
 
 <!doctype html>
 <html
   lang={lang}
-  class="scroll-pt-16 scroll-smooth"
-  data-theme={theme?.defaultTheme || "dark"}
+  class:list={["scroll-pt-16 scroll-smooth", themeDefault]}
+  data-theme={themeDefault}
   style="scroll-behavior: smooth;"
 >
   <head>
@@ -133,31 +137,10 @@ const ogImgUrl = new URL(socialImage, canonicalURL).href;
     <link rel="preconnect" href="https://firebasestorage.googleapis.com" />
 
     <!-- Theme initialization script (prevents flash of wrong theme) -->
-    <script is:inline>
-      (function () {
-        const storageKey = `${"theme-preference"}`;
-        const defaultTheme = `${"dark"}`;
-
-        function getStoredTheme() {
-          try {
-            return localStorage.getItem(storageKey);
-          } catch (e) {
-            return null;
-          }
-        }
-
-        function setTheme(theme) {
-          document.documentElement.classList.remove("light", "dark");
-          document.documentElement.classList.add(theme);
-          document.documentElement.setAttribute("data-theme", theme);
-        }
-
-        // Apply theme immediately to prevent flash
-        const storedTheme = getStoredTheme();
-        const themeToApply = storedTheme || defaultTheme;
-        setTheme(themeToApply);
-      })();
-    </script>
+    <script
+      is:inline
+      set:html={`(function(){var storageKey=${JSON.stringify(themeStorageKey)};var defaultTheme=${JSON.stringify(themeDefault)};function getStoredTheme(){try{return localStorage.getItem(storageKey)}catch(e){return null}}function setTheme(theme){document.documentElement.classList.remove("light","dark");document.documentElement.classList.add(theme);document.documentElement.setAttribute("data-theme",theme)}var storedTheme=getStoredTheme();setTheme(storedTheme||defaultTheme)})()`}
+    />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" is:inline>
@@ -168,7 +151,7 @@ const ogImgUrl = new URL(socialImage, canonicalURL).href;
         "givenName": "Bilal",
         "familyName": "Naeem",
         "jobTitle": "Co-Founder & Team Lead at INFILP",
-        "description": "Expert mobile app developer and software engineer specializing in React Native, React, TypeScript, and AI-powered solutions. Leading a top 0.1% Fiverr development agency with 50+ successful global projects.",
+        "description": "Expert mobile app developer and software engineer specializing in React Native, React, and TypeScript. Leading a top 0.1% Fiverr development agency with 50+ successful global projects.",
         "url": "https://bilalnaeem.infilp.com",
         "image": "https://bilalnaeem.infilp.combilal-big.jpeg",
         "email": "bilalnaeem166@gmail.com",
@@ -187,8 +170,6 @@ const ogImgUrl = new URL(socialImage, canonicalURL).href;
           "Cross-platform Development",
           "Full Stack Development",
           "Node.js Backend Development",
-          "AI Integration",
-          "Machine Learning",
           "Stripe Payment Integration",
           "OAuth Authentication",
           "Fintech Applications",
@@ -230,8 +211,6 @@ const ogImgUrl = new URL(socialImage, canonicalURL).href;
             "Cross-platform Development",
             "Node.js",
             "Full Stack Development",
-            "AI Integration",
-            "Machine Learning",
             "Stripe Integration",
             "OAuth Authentication"
           ]
@@ -245,5 +224,7 @@ const ogImgUrl = new URL(socialImage, canonicalURL).href;
       <slot />
     </main>
     <Footer socialLinks={socialLinks} />
+
+    <script is:inline set:html={themeToggleScript} />
   </body>
 </html>

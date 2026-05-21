@@ -22,13 +22,13 @@ export interface PublicationProps {
   url: string;
   /** Optional label in the meta row (e.g. IEEE Xplore) */
   venue?: string;
+  /** Optional cover image (same role as project cards) */
+  image?: string;
 }
 
 export interface OpenSourceProjectProps {
   name: string;
-  /** What the library or repo is for (one short paragraph). */
-  summary: string;
-  /** Your role: features shipped, refactors, maintenance, etc. */
+  /** One concise line: what the project is and your contribution. */
   contribution: string;
   repository: string;
   homepage?: string;
