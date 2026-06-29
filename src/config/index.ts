@@ -19,6 +19,10 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Email", href: "mailto:bilalnaeem166@gmail.com" },
     { text: "LinkedIn", href: "https://www.linkedin.com/in/bilal~naeem/" },
     { text: "Github", href: "https://github.com/bilal1031" },
+    {
+      text: "Google Scholar",
+      href: "https://scholar.google.com/citations?hl=en&user=aZsOEz4AAAAJ",
+    },
   ],
   socialImage: "/bilal-big.jpeg",
   canonicalURL: "https://bilalnaeem.infilp.com",
